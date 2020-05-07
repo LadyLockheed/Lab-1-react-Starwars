@@ -1,25 +1,25 @@
-import React, {useState} from 'react'
+import React from 'react'
 
-const Search=()=>{
+const Search=({peopleData, planetsData})=>{
+   
+console.log(peopleData)
+    let jsxListPeople=peopleData.map((element)=>
 
-const [searchParams, setSearchParams]=useState('Sök...')
-const handleSearch=event=>{
+        <div key={element.name}>
+            <p>Name: {element.name}</p>
+            <p>Birthyear: {element.birth_year}</p>
+            <p>Haircolor: {element.hair_color}</p>
+            <p>Skincolor: {element.skin_color}</p>
+            <button>Lägg till i favoriter</button>
+        </div>
+    )
 
-
-   setSearchParams(event.target.value)
-
-
-}
-//HÄr ska det ligga ett inputfält
-//Skicka in de två listorna , people och plantets
-//när man söker ska jag använda .filter
-//sen mapas resultatet och renderas i samma sorts element som på vanliga sidan.
 
     return(
 
         <div>
 
-           <input type='text' value={searchParams} onChange={event=>handleSearch(event)} onClick={()=>setSearchParams('')}/>
+            {jsxListPeople}
 
         </div>
     )

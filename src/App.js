@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 // import Header from './components/Header'
-// import Search from './components/Search'
+import Search from './components/Search'
 // import Info from './components/Info'
 
 import './App.css';
@@ -18,14 +18,18 @@ function App() {
     for (let i=0; i<=1; i++){
 
       let data=[]
-   
+
+      //hämtar första pagen med 10 st people
       let responseFirstPage= await fetch(baseUrl+category)
       let resultFirstPage=await responseFirstPage.json()
+       
       //lägger in resultatet på tom datalist
       resultFirstPage.results.forEach(element=>data.push(element))
 
       let next=resultFirstPage.next
       let pageNumber=2;
+
+      //loopar igenom restrerande url:er med sidor med people/planets
       while (next!=null){
          
           let response=await fetch (baseUrl+category+'/?page='+pageNumber)
@@ -36,6 +40,7 @@ function App() {
   
           next=result.next
       }
+
         if(category==='people'){
           setPeopleData(data)
         }
@@ -44,38 +49,24 @@ function App() {
         }
         category='planets'
     } 
-}
+}//slut getpeoplefunc
+
 
 useEffect(()=>{
   
   getData();
 
-    
+  
+
+},[])
 
 
-
-},[]) 
-
-useEffect(()=>{
-  console.log('PeopleData: ', peopleData)
-        console.log('PlanetData: ', planetsData)
-})
 
   return (
     <div className="App">
 
 
-      {/* <Header/> */}
-
-      {/* Välkomsttext
-      <button>>Go</button> */}
-
-
-
-      <button onClick={()=>getData('people')}>People</button>
-      <button onClick={()=>getData('planets')}>Planets</button>
-
-      {/* <Search/> */}
+      <Search peopleData={peopleData} planetsData={planetsData}/>
 
       
 
