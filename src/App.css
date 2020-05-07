@@ -1,0 +1,13 @@
+.App{
+
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+.hidden{
+
+  display:hidden;
+}
+.not-hidden{
+
+  border:2px solid black;
+}

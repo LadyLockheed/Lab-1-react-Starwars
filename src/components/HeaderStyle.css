@@ -1,0 +1,21 @@
+header{
+    border:1px solid black;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    padding:1em;
+}
+header > h1 {
+    border:1px solid orange;
+   
+   
+}
+nav{
+    border:1px solid pink;
+    display:flex;
+    
+}
+nav > p {
+    border:1px solid green;
+    padding:1em;
+}
