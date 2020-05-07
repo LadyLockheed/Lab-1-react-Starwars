@@ -1,0 +1,17 @@
+.gridContainer{
+    padding:2em;
+    border:1px solid green;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1em;
+}
+.card{
+    border:1px solid orange;
+    font-size: .7em;
+    text-align: center;
+    border-radius:5px;
+}
+.card > :first-child{
+    border:1px solid red;
+    
+}
