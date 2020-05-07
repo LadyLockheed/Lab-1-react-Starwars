@@ -10,7 +10,7 @@ const Search=({peopleData, planetsData})=>{
     let jsxListPeople=peopleData.map((element)=>
 
         <div key={element.name}  className='card'>
-            <h2>Name: {element.name}</h2>
+            <h2>{element.name}</h2>
             <p>Birthyear: {element.birth_year}</p>
             <p>Haircolor: {element.hair_color}</p>
             <p>Skincolor: {element.skin_color}</p>
@@ -53,9 +53,17 @@ const Search=({peopleData, planetsData})=>{
             <button onClick={()=> setCategory('PEOPLE')}>People</button>
             <button onClick={()=> setCategory('PLANETS')}>Planets</button>
 
+            <input type='text' placeholder='search and you will find'/>
+
+            <a id="top"></a>
                 <div className='gridContainer'>
                     {currentCategory}
+                <a href="#top"><button className='to-the-top'>To the top</button></a>
+
                 </div>
+
+               
+             
 
         </div>
     )

@@ -1,6 +1,14 @@
 .App{
 
   font-family: 'Libre Franklin', sans-serif;
+  font-family: 'Libre Franklin', sans-serif;
+  min-height:100vh;
+  background-image:url('./images/stormtrooper.jpg');
+  background-size: cover;
+ background-position:center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  scroll-behavior: smooth;
 }
 
 .hidden{

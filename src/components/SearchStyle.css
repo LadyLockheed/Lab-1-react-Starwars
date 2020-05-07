@@ -1,3 +1,6 @@
+/* .search-comp{
+    scroll-behavior: smooth;
+} */
 .gridContainer{
     padding:2em;
     border:1px solid green;
@@ -6,12 +9,35 @@
     gap:1em;
 }
 .card{
-    border:1px solid orange;
+    border:1px solid black;
+    background-color:rgba(141, 141, 141, 0.5);
     font-size: .7em;
     text-align: center;
     border-radius:5px;
 }
 .card > :first-child{
-    border:1px solid red;
+   
     
+}
+.card > button{
+    background-color:black;
+    border:2px solid white;
+    color:white;
+    margin-bottom:0.5em;
+    padding:0.5em;
+}
+.to-the-top{
+    background-color:orange;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    height: 30px;
+    width: 30px;
+    background-color: #bbb;
+    border-radius: 50%;
+    margin:0.5em;
+    padding:0.5em;
+    border:none;
+   
+
 }
