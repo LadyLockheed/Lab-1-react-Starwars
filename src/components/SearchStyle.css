@@ -14,11 +14,22 @@
     font-size: .7em;
     text-align: center;
     border-radius:5px;
-}
-.card > :first-child{
-   
     
 }
+.card >h2{
+    color:goldenrod;
+}
+.card > .male{
+
+    color:rgb(146, 146, 146);
+}
+.card > .female{
+    color:rgb(196, 173, 173);
+}
+.card > .desert{
+    border:2px solid sandybrown;
+}
+
 .card > button{
     background-color:black;
     border:2px solid white;
