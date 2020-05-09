@@ -4,42 +4,18 @@ import './HeaderStyle.css'
 
 const Header=({displayPage, setDisplayPage})=>{
 
-//if currentpAge=favorites
-//gör det här:
-//let favorites=active
-
-  
-    // function handlePageToggle(page){
-
-    //     if (displayPage==='SEARCH'){
-    //         setDisplayPage(page)
-    //         searchNav='active'
-
-    //     }else if (displayPage==='ADD'){
-    //         setDisplayPage(page)
-    //         addNav='active'
-    //     }
-    //     else if(displayPage==='FAVORITES'){
-    //         setDisplayPage('FAVORITES')
-    //         favoritesNav='active'
-    //     }
-    //     else if( displayPage==='WELCOME'){
-    //         setDisplayPage('WELCOME')
-            
-    //     }
-    // }
-    let searchNav='not-active';
-    let addNav='not-active';
-    let favoritesNav='not-active';
+    let searchNav='nav-not-active';
+    let addNav='nav-not-active';
+    let favoritesNav='nav-not-active';
 
     if(displayPage==='SEARCH'){
-        searchNav='active'
+        searchNav='nav-active'
     }
     else if(displayPage==='ADD'){
-        addNav='active'
+        addNav='nav-active'
     }
     else if(displayPage==='FAVORITES'){
-        favoritesNav='active'
+        favoritesNav='nav-active'
     }
 
        function handlePageToggle(page){
@@ -81,7 +57,7 @@ const Header=({displayPage, setDisplayPage})=>{
 
         <nav className="navbar">
             <p className={searchNav} onClick={()=>handlePageToggle('SEARCH')}>Info</p>
-            <p className={addNav} onClick={()=>handlePageToggle('ADD')}>Add favorite</p>
+            <p className={addNav} onClick={()=>handlePageToggle('ADD')}>Create character</p>
             <p className={favoritesNav} onClick={()=>handlePageToggle('FAVORITES')}>Favorites</p>
         </nav>
 
