@@ -26,25 +26,40 @@ header{
       margin:0.5;
       
   }
-  /* .not-active{
+  .not-active{
     display:inline-block;
     border:2px solid #202020;
     padding:0.3em;
+    align-self:center;
+    margin-left:1em;
+    opacity:.8;
     
   }
+  .not-active:hover {
+    border:2px solid goldenrod;
+    transition:all 0.3s ease 0s; 
+    cursor:pointer;
+} 
   .active{
     display:inline-block;
-    border:2px solid white;
+    border:2px solid goldenrod;
+    background-color:goldenrod;
+    color:black;
     padding:0.3em;
-  } */
-  .navbar > p{
+    align-self:center;
+    margin-left:1em;
+    opacity:.8;
+  }
+  .active:hover{
+      border:2px solid goldenrod;
+      transition:all 0.3s ease 0s; 
+      cursor:pointer;
+  }
+
+  /* .navbar > p{
     display:inline-block;
     border:2px solid #202020;
     padding:0.3em;
-  }
-  .navbar > p:hover {
-      border:2px solid white;
-      transition:all 0.3s ease 0s; 
-      cursor:pointer;
-  } 
+  } */
+
    

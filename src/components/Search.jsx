@@ -6,12 +6,20 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
    const [category, setCategory]=useState('PEOPLE')
    const [searchParams, setSearchParams]=useState('')
 
+
+   function handleAddToFavorites(person){
+    let newFavorite=[...favorites, person]
+    setFavorites(newFavorite)
+
+}
+
     //Renderar listan people utifrån om och vad man skrivit i searchrutan
     let jsxListPeople=peopleData.filter(person=>
         person.name.toLowerCase().includes(searchParams.toLowerCase()) 
     ||  person.hair_color.toLowerCase().includes(searchParams.toLowerCase()) 
     ||  person.birth_year.toLowerCase().includes(searchParams.toLowerCase())
     ).map((person)=>
+
 
         <div key={person.name}  className='card'>
             <h2 className={person.gender}>{person.name}</h2>
@@ -38,10 +46,7 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
         </div>
     )  
 
-    function handleAddToFavorites(person){
-        let newFavorite=[...favorites, person]
-        setFavorites(newFavorite)
-    }
+
  
     let currentCategory=null;
 
@@ -68,7 +73,9 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
             <button onClick={()=> setCategory('PLANETS')}>Planets</button>
         </div>
         <div className='input-container'>
-            <div className='image-container'><div className='search-image'></div></div>
+            <div className='image-container'>
+                <div className='search-image'></div>
+            </div>
                
             <input className="searchfield" type='text' 
                 placeholder='Search and you will find....' 

@@ -96,7 +96,7 @@ useEffect(()=>{
 
   return (
     <div className="App">
-      <Header setDisplayPage={setDisplayPage}/>
+      <Header displayPage={displayPage} setDisplayPage={setDisplayPage}/>
 
    
      

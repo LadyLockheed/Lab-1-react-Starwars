@@ -71,7 +71,7 @@
 
 
 .card-button{
-    background-color:black;
+    background-color:rgb(70, 70, 70);
     border:1px solid white;
     border-radius:5px;
     color:white;
@@ -81,7 +81,7 @@
    
 }
 .card-button:hover {
-
+    background-color:black;
     cursor:pointer;
 }
 .to-the-top{
