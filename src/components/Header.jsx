@@ -2,26 +2,27 @@ import React from 'react'
 import './HeaderStyle.css'
 
 
-const Header=()=>{
+const Header=({setDisplayPage})=>{
+
+    let navClassName=null;
+    
+    // let function handlePageChoice(){
 
 
+    // }
 
     return (
 
         <header>
 
-            <div>The information you want, we have</div>
+        
+        <p className="headerLogo" onClick={()=>setDisplayPage('WELCOME')}>Star Wars</p>
 
-            <div className=''>
-
-                <h1>Star Wars</h1>
-
-                <nav>
-                    <p>Add</p>
-                    <p>Favoriter</p>
-                </nav>
-            </div>
-         
+        <nav className="navbar">
+            <p onClick={()=>setDisplayPage('SEARCH')}>Info</p>
+            <p onClick={()=>setDisplayPage('ADD')}>Add favorite</p>
+            <p onClick={()=>setDisplayPage('FAVORITES')}>Favorites</p>
+        </nav>
 
         </header>
     )

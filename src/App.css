@@ -1,21 +1,21 @@
 .App{
 
   font-family: 'Libre Franklin', sans-serif;
-  font-family: 'Libre Franklin', sans-serif;
+  
   min-height:100vh;
   background-image:url('./images/stormtrooper.jpg');
   background-size: cover;
- background-position:center;
+  background-position:center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   scroll-behavior: smooth;
 }
+.welcome-text{
+  font-size:3rem;
+  -webkit-text-fill-color: rgba(0, 0, 0, 0);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #FFE600;
+  font-weight:800;
+  margin:2.8em 1.5em;
 
-.hidden{
-
-  display:hidden;
-}
-.not-hidden{
-
-  border:2px solid black;
 }

@@ -1,0 +1,51 @@
+.grid-container-favorites{
+    padding:2em;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:1em;
+}
+.by-me{  
+    background-color:rgba(141, 141, 141, 0.5);
+    font-size: .7em;
+    text-align: center;
+    border-radius:5px;
+    color:white;
+
+}
+
+.card{
+    background-color:rgba(141, 141, 141, 0.5);
+    font-size: .7em;
+    text-align: center;
+    border-radius:5px;  
+}
+.top-wrapper{
+    display:grid;
+    grid-template-columns:1fr 3fr 1fr;
+}
+.top-wrapper > h2{
+    grid-column:2/2;
+    color:goldenrod;
+}
+.image-user{
+    height:20px;
+    width:20px;
+    background-image:url('../images/socialwhite.png');
+    background-size:contain;
+    grid-column:3/3;
+    justify-self: right;
+    margin:0.5em;
+    opacity: .5;
+  
+}
+.image-globe{
+    height:20px;
+    width:20px;
+    background-image:url('../images/globalwhite.png');
+    background-size:contain;
+    grid-column:3/3;
+    justify-self: right;
+    margin:0.5em;
+    opacity: .5;
+
+}

@@ -1,21 +1,44 @@
 header{
-    border:1px solid black;
+    color:white; 
     display:flex;
     flex-direction:row;
     justify-content:space-between;
-    padding:1em;
-}
-header > h1 {
-    border:1px solid orange;
-   
-   
-}
-nav{
-    border:1px solid pink;
-    display:flex;
+    padding:.5em 1.5em;
+    /* background-color:black; */
+    /* position:fixed;
+    width:100%;
+    top:0; */
+  
+  }
+  .headerLogo{
+    /* color:rgb(255, 238, 0); */
+    margin:0;
+    font-size:1em;
+    font-family:'Libre Franklin', sans-serif;
+    font-weight:800;
+    font-size:2em;
+    align-self:center;
+ 
+
+  }
+  .headerLogo:hover{
+      cursor:pointer;
+      color:rgb(250, 226, 12);
+      transition:all 0.3s ease 0s;
+  }
+  .navbar{
+      margin:0.5;
+      
+  }
+  .navbar > p {
+    display:inline-block;
+    border:2px solid #202020;
+    padding:0.3em;
     
-}
-nav > p {
-    border:1px solid green;
-    padding:1em;
-}
+  }
+  .navbar > p:hover {
+      border:2px solid white;
+      transition:all 0.3s ease 0s; 
+      cursor:pointer;
+  } 
+   

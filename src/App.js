@@ -1,15 +1,49 @@
 import React, {useState, useEffect} from 'react';
-// import Header from './components/Header'
+import AddOwnCharacter from './components/AddOwnCharacter'
+import Header from './components/Header'
 import Search from './components/Search'
-// import Info from './components/Info'
+import Favorites from './components/Favorites'
 
 import './App.css';
+
 
 function App() {
 
   const[peopleData, setPeopleData]=useState([])
   const[planetsData, setPlanetsData]=useState([])
+  const[displayPage, setDisplayPage]=useState('FAVORITES')
+  const[favorites, setFavorites]=useState([{name:'Minion',birth_year:'22bc',hair_color:'black',skin_color:'yellow', created:'by-me'}])
 
+  let currentPage=null;
+  let welcomeText=null;
+
+  switch(displayPage){
+
+    case 'WELCOME':
+      welcomeText=(<div className="welcome-text">The information <br/> you want,<br/> we have.</div>)
+      break;
+
+    case 'SEARCH':
+      currentPage= <Search peopleData={peopleData} planetsData={planetsData} favorites={favorites} setFavorites={setFavorites}/>
+      break;
+    
+    case 'ADD':
+      currentPage=<AddOwnCharacter favorites={favorites} setFavorites={setFavorites}/>
+      break;
+
+    case 'FAVORITES':
+      currentPage=<Favorites favorites={favorites}/>
+      break;
+
+    default:
+      console.log('sidan finns ej')
+
+
+  }
+
+
+
+  //hämtar data från API
   async function getData(){
  
     let baseUrl='https://swapi.dev/api/'
@@ -56,18 +90,18 @@ useEffect(()=>{
   
   getData();
 
-  
-
 },[])
 
 
 
   return (
     <div className="App">
+      <Header setDisplayPage={setDisplayPage}/>
 
-
-      <Search peopleData={peopleData} planetsData={planetsData}/>
-
+   
+     
+     {currentPage}
+     {welcomeText}
       
 
     </div>
