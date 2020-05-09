@@ -4,11 +4,7 @@ header{
     flex-direction:row;
     justify-content:space-between;
     padding:.5em 1.5em;
-    /* background-color:black; */
-    /* position:fixed;
-    width:100%;
-    top:0; */
-  
+
   }
   .headerLogo{
     /* color:rgb(255, 238, 0); */
@@ -30,11 +26,21 @@ header{
       margin:0.5;
       
   }
-  .navbar > p {
+  /* .not-active{
     display:inline-block;
     border:2px solid #202020;
     padding:0.3em;
     
+  }
+  .active{
+    display:inline-block;
+    border:2px solid white;
+    padding:0.3em;
+  } */
+  .navbar > p{
+    display:inline-block;
+    border:2px solid #202020;
+    padding:0.3em;
   }
   .navbar > p:hover {
       border:2px solid white;

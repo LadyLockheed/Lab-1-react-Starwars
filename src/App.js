@@ -11,7 +11,7 @@ function App() {
 
   const[peopleData, setPeopleData]=useState([])
   const[planetsData, setPlanetsData]=useState([])
-  const[displayPage, setDisplayPage]=useState('FAVORITES')
+  const[displayPage, setDisplayPage]=useState('SEARCH')
   const[favorites, setFavorites]=useState([{name:'Minion',birth_year:'22bc',hair_color:'black',skin_color:'yellow', created:'by-me'}])
 
   let currentPage=null;

@@ -34,7 +34,6 @@ const Favorites=({favorites})=>{
             cardClassName=person.created
             imageClassName='image-user'
         }
-    console.log('cardClassName är: ', cardClassName)
 
      return <div key={person.name}  className={cardClassName}>
         

@@ -18,7 +18,7 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
             <p>Birthyear: {person.birth_year}</p>
             <p>Haircolor: {person.hair_color}</p>
             <p>Skincolor: {person.skin_color}</p>
-            <button className='card-button' onClick={()=>handleAddToFavorites(person)}>Lägg till i favoriter</button>
+            <button className='card-button' onClick={()=>handleAddToFavorites(person)}>Like</button>
         </div>
     
     )
@@ -34,7 +34,7 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
             <h2>Name: {planet.name}</h2>
             <p>Climate: {planet.climate}</p>
             <p>Terrain: {planet.terrain}</p>
-            <button className='card-button' onClick={()=>handleAddToFavorites(planet)}>Lägg till i favoriter</button>
+            <button className='card-button' onClick={()=>handleAddToFavorites(planet)}>Like</button>
         </div>
     )  
 
@@ -63,15 +63,23 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
     return(
 
         <div className='search-comp'>
-  
+        <div className='buttons-container'>
             <button onClick={()=> setCategory('PEOPLE')}>People</button>
             <button onClick={()=> setCategory('PLANETS')}>Planets</button>
+        </div>
+        <div className='input-container'>
+            <div className='image-container'><div className='search-image'></div></div>
+               
+            <input className="searchfield" type='text' 
+                placeholder='Search and you will find....' 
+                value={searchParams}
+                onChange={e=>setSearchParams(e.target.value)}
+                />
 
-            <input type='text' 
-            placeholder='search and you will find' 
-            value={searchParams}
-            onChange={e=>setSearchParams(e.target.value)}
-            />
+        </div>
+            
+
+      
  
             {/* <a id="top">'</a> */}
                 <div className='grid-container'>
