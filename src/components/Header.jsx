@@ -44,21 +44,12 @@ const Header=({displayPage, setDisplayPage})=>{
 
         <header>
 
-        {/* <p className="headerLogo" onClick={()=>setDisplayPage('WELCOME')}>Star Wars</p>
-
-        <nav className="navbar">
-            <p onClick={()=>setDisplayPage('SEARCH')}>Search</p>
-            <p onClick={()=>setDisplayPage('ADD')}>Add favorite</p>
-            <p onClick={()=>setDisplayPage('FAVORITES')}>Favorites</p>
-        </nav> */}
-
-
         <p className="headerLogo" onClick={()=>handlePageToggle('WELCOME')}>Star Wars</p>
 
         <nav className="navbar">
             <p className={searchNav} onClick={()=>handlePageToggle('SEARCH')}>Info</p>
-            <p className={addNav} onClick={()=>handlePageToggle('ADD')}>Create character</p>
             <p className={favoritesNav} onClick={()=>handlePageToggle('FAVORITES')}>Favorites</p>
+            <p className={addNav} onClick={()=>handlePageToggle('ADD')}>Create character</p>
         </nav>
 
         </header>

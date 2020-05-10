@@ -43,21 +43,16 @@ const AddOwnCharacter=({favorites, setFavorites})=>{
         if (favorites.some(person=>person.name===character.name)){
            setVadlidateMessage('Den här karaktären finns redan')
         }
-        else if(character.name==''){
-           
-           setVadlidateMessage('Skriv in ett namn tack')
-            
+        else if(character.name===''){
+           setVadlidateMessage('Skriv in ett namn tack')  
         }
         else{
-           
             let addNewChar=[...favorites, character]
             setFavorites(addNewChar)
             setVadlidateMessage('')
             setSubMskClassName('submitted')
 
         }
-      
-
 
     }
 
@@ -93,14 +88,9 @@ const AddOwnCharacter=({favorites, setFavorites})=>{
 
                 <button className='submit-button' onClick={handleSubmit}>Use the force!</button>
                 <h3 className={subMsgClassName}>{submitMessage}</h3>
-                
-             
-            
+
             </div>
     </div>
-
-
-
 
     )
 }

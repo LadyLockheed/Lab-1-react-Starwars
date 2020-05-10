@@ -3,67 +3,114 @@ import './FavoritesStyle.css'
 
 const Favorites=({favorites, setFavorites})=>{
 
+    const [displayList, setDisplayList]=useState('')
 
+    const handleRemove=itemToRemove=>setFavorites(favorites.filter(item=>item !==itemToRemove))
+    
+    let imageClassName=null;
+    //ALLA
+    let jsxListAll=favorites.map((item)=>{
 
-     // let newList = oldList.filter(x => x.id !== idToRemove);
-    const [displayList, setDisplayList]=useState('ALL')
-
-    //TODO funktion som visar från vald kategori. Tex, favorites.filter
-    //TODO Se till så man inte kan lägga till samma objekt en gång till. 
-    // efter ifsatser som sätter vilken bild det ska vara, där kanske man kan sätta ytterligare ifsatser med return, om item.terrain inte finns, då är det ett peopleobbjekt, då ska den sortera fram people och visa den jsxlistan med name birthyear osv
-    //om item.terrain finns då är det planets, då ska den sortera fram planets och visa terrain, climate och sånt stuff.
-
-  
-    //Tar bort cards ur listan
-    const handleRemove=item=>setFavorites(favorites.filter(people=>people !==item))
-
-    let jsxList=favorites.map((item)=>{
-
-        let cardClassName=null;  
-        let imageClassName=null; 
-
-        if(item.created!=='by-me'){ 
-            cardClassName='card'
+        if(item.created!=='by-me'){
             imageClassName='image-globe'
         }
         else{
-            cardClassName=item.created
             imageClassName='image-user'
         }
-       
-            //If sat. If statedisplayLIst (state som jag måste skapa)=='PLANET' som skickas från planetknappen använd då den här returnen.
-            //if statISDisplayed =='people som skickas från peopleknappen, då ska använda den andra returnen som jag inte skapat än. 
-            //if inget av det är valt, setDisplay till ALL. Det som visas från början.
-            //? Hur gör för listan med alla? För att kunna skriva ut det statiska BirthYear/terrain osv.
-            // if(displayList==='ALL')
-        return <div key={item.name}  className={cardClassName}>
+        return (<div key={item.name}  className='card'>
         
-                <div className='top-wrapper'> 
-                    <h2>{item.name}</h2>  
-                    <div className={imageClassName}></div>     
-                </div>
-               
-                <p>Birthyear: {item.birth_year}</p>
-                <p>Haircolor: {item.hair_color}</p>
-                <p>Skincolor: {item.skin_color}</p>
-        
-                <button className="card-button" onClick={()=>handleRemove(item)}>Ta bort ur favoriter</button>
+            <div className='top-wrapper'> 
+                <h2>{item.name}</h2>  
+                <div className={imageClassName}></div>     
             </div>
+           
+            <p>Birthyear: {item.birth_year}</p>
+            <p>Haircolor: {item.hair_color}</p>
+            <p>Skincolor: {item.skin_color}</p>
     
+            <button className="card-button" onClick={()=>handleRemove(item)}>Ta bort ur favoriter</button>
+        </div>)
+ 
+    })//slut jsxListALL
+    //PEOPLE
+    let jsxListPeople=favorites.filter(item=> item.birth_year!==undefined).map(person=>{
 
-    })
-   
+        if(person.created!=='by-me'){
+            imageClassName='image-globe'
+        }
+        else{
+            imageClassName='image-user'
+        }
+    
+        return (<div key={person.name}  className='card'>
+        
+            <div className='top-wrapper'> 
+                <h2>{person.name}</h2>  
+                <div className={imageClassName}></div>     
+            </div>
+           
+            <p>Birthyear: {person.birth_year}</p>
+            <p>Haircolor: {person.hair_color}</p>
+            <p>Skincolor: {person.skin_color}</p>
+    
+            <button className="card-button" onClick={()=>handleRemove(person)}>Ta bort ur favoriter</button>
+        </div>)
+       })
+       //PLANETS
+       let jsxListPlanets=favorites.filter(item=> item.terrain!==undefined).map(planet=>{
+
+        if(planet.created!=='by-me'){
+            imageClassName='image-globe'
+        }
+        else{
+            imageClassName='image-user'
+        }
+    
+        return (<div key={planet.name}  className='card'>
+        
+            <div className='top-wrapper'> 
+                <h2>{planet.name}</h2>  
+                <div className={imageClassName}></div>     
+            </div>
+           
+            <p>Climate: {planet.climate}</p>
+            <p>Terrain: {planet.terrain}</p>
+            <p>Gravity: {planet.gravity}</p>
+    
+            <button className="card-button" onClick={()=>handleRemove(planet)}>Ta bort ur favoriter</button>
+        </div>)
+       })
+
+
+    let currentList=null;
+
+    switch(displayList){
+
+        case 'ALL':
+            currentList=jsxListAll
+        break;
+        case 'PEOPLE':
+            currentList=jsxListPeople
+        break;
+        case 'PLANETS':
+            currentList=jsxListPlanets
+        break;
+        default:
+            currentList=jsxListAll
+
+    }
 
     return(
         <div>
-        <div className='button-container-favorites'>
-            <button onClick={()=>setDisplayList('ALL')}>All</button>
-            <button onClick={()=>setDisplayList('PEOPLE')}>People</button>
-            <button onClick={()=>setDisplayList('PLANETS')}>Planets</button>
-        </div>
-           
+            <div className='button-container-favorites'>
+                <button onClick={()=>setDisplayList('ALL')}>All</button>
+                <button onClick={()=>setDisplayList('PEOPLE')}>People</button>
+                <button onClick={()=>setDisplayList('PLANETS')}>Planets</button>
+            </div>
+            
             <div className='grid-container-favorites'>
-                {jsxList}
+                {currentList}
+               
 
             </div>
 

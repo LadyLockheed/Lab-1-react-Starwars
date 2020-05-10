@@ -17,17 +17,26 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
             setFavorites(newFavorite)
         }
   
-    }   
-
+    } 
+    // const [heartClassName, setHeartClassName]=useState('')
+    //TODO den ska kolla mot favoritlistan, om en dublett finns där ska den använda ifyllda hjärtat. Om ej ska den använda andra hjärtat.
     //Renderar listan people utifrån om och vad man skrivit i searchrutan
     let jsxListPeople=peopleData.filter(person=>
         person.name.toLowerCase().includes(searchParams.toLowerCase()) 
     ||  person.hair_color.toLowerCase().includes(searchParams.toLowerCase()) 
     ||  person.birth_year.toLowerCase().includes(searchParams.toLowerCase())
     ||  person.skin_color.toLowerCase().includes(searchParams.toLowerCase())
-    ).map((person)=>
+    ).map((person)=>{
 
-        <div key={person.name}  className='card'>
+        // if(favorites.some(favItem=>favItem.name==person.name)){
+        //     setHeartClassName('filled-heart')
+        // }
+        // else{
+        //    setHeartClassName('empty-heart')
+        // }
+
+       return <div key={person.name}  className='card'>
+        {/* <div className={heartClassName}></div> */}
             <h2 className={person.gender}>{person.name}</h2>
             <p>Birthyear: {person.birth_year}</p>
             <p>Haircolor: {person.hair_color}</p>
@@ -35,7 +44,7 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
             <button className='card-button' onClick={()=>handleAddToFavorites(person)}>Like</button>
         </div>
     
-    )
+    })
 
     //Renderar listan planets utifrån om och vad man skrivit i searchrutan
     let jsxListPlanets=planetsData.filter(planet=>
@@ -54,11 +63,11 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
         </div>
     )  
 
-
     //variabler som styr classnamn för knappar
     let currentCategory=null;
     let peoplebutton='not-active'
     let planetsbutton='not-active'
+
     //vilken lista ska vara synlig styrs här
     switch(category){
 

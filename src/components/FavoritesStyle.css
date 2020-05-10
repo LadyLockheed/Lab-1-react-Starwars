@@ -1,3 +1,4 @@
+
 .grid-container-favorites{
     padding:2em;
     display:grid;
@@ -31,7 +32,8 @@
     background-color:rgba(141, 141, 141, 0.5);
     font-size: .7em;
     text-align: center;
-    border-radius:5px;  
+    border-radius:5px; 
+    
 }
 .top-wrapper{
     display:grid;
