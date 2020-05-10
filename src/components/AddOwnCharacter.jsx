@@ -1,7 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './AddOwnCharacterStyle.css'
 
 const AddOwnCharacter=({favorites, setFavorites})=>{
+
+    // const [valid, setValid]=useState(false)
+    const [subtmitMessage, setSubmitMessage]=useState('')
 
     let character={ 
         name:'',
@@ -13,6 +16,8 @@ const AddOwnCharacter=({favorites, setFavorites})=>{
     }
 
     const handleInputValue=(event, inputField)=>{
+
+        setSubmitMessage('')
 
         if (inputField==='name'){
             character.name=event.target.value;
@@ -28,13 +33,26 @@ const AddOwnCharacter=({favorites, setFavorites})=>{
         }
 
     }
-
+    
     const handleSubmit=()=>{
 
+       if (favorites.some(person=>person.name===character.name)){
+           setSubmitMessage('Den här karaktären finns redan.')
+
+       }
+       else{
+        setSubmitMessage('May the force be with you.')
         let addNewChar=[...favorites, character]
         setFavorites(addNewChar)
+       }
+
+     
 
     }
+
+    // const validateForm=()=>{
+        
+    // }
 
     return (
       
@@ -66,6 +84,8 @@ const AddOwnCharacter=({favorites, setFavorites})=>{
             </form>
 
             <button className='submit-button' onClick={handleSubmit}>Use the force!</button>
+            <p className='submit-message'>Submit: {subtmitMessage}</p>
+           
         </div>
     </div>
 

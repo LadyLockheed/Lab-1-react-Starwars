@@ -8,11 +8,17 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
 
    //lägger till favoriter till lista
     //!OBS måste kolla så att det valda objektet inte redan finns med i listan.
-   function handleAddToFavorites(person){
-    let newFavorite=[...favorites, person]
-    setFavorites(newFavorite)
+    function handleAddToFavorites(newItem){
 
-}
+        if(favorites.some(favItem=>favItem.name===newItem.name)){
+            console.log('Favoriten finns redan')
+        }
+        else{
+            let newFavorite=[...favorites, newItem]
+            setFavorites(newFavorite)
+        }
+  
+    }   
 
     //Renderar listan people utifrån om och vad man skrivit i searchrutan
     let jsxListPeople=peopleData.filter(person=>

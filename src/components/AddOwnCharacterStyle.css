@@ -64,4 +64,9 @@ form > input:hover, input:focus{
 .submit-button:hover{
     cursor:pointer;
 }
+.submit-message{
+    color:white;
+    justify-self:right;
+}
+
 
