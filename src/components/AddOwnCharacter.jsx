@@ -3,21 +3,23 @@ import './AddOwnCharacterStyle.css'
 
 const AddOwnCharacter=({favorites, setFavorites})=>{
 
-    // const [valid, setValid]=useState(false)
-    const [subtmitMessage, setSubmitMessage]=useState('')
-
+    const [validateMessage, setVadlidateMessage]=useState('')
+    const [subMsgClassName, setSubMskClassName]=useState('not-submitted')
+ 
+    //ny karaktär läggs in  i detta objektet
     let character={ 
         name:'',
-        birth_year:'',
-        hair_color:'',
-        skin_color:'',
+        birth_year:'unknown',
+        hair_color:'unknown',
+        skin_color:'unknown',
         created:'by-me'
 
     }
 
+    //tar hand om det som skrivits i inputfälten
     const handleInputValue=(event, inputField)=>{
 
-        setSubmitMessage('')
+        setSubMskClassName('not-submitted')
 
         if (inputField==='name'){
             character.name=event.target.value;
@@ -31,28 +33,33 @@ const AddOwnCharacter=({favorites, setFavorites})=>{
         else if (inputField==='skincolor'){
             character.skin_color=event.target.value;
         }
-
+           
     }
-    
+
+   
+    let submitMessage='Added new character you have. May the force be with you.'
     const handleSubmit=()=>{
 
-       if (favorites.some(person=>person.name===character.name)){
-           setSubmitMessage('Den här karaktären finns redan.')
+        if (favorites.some(person=>person.name===character.name)){
+           setVadlidateMessage('Den här karaktären finns redan')
+        }
+        else if(character.name==''){
+           
+           setVadlidateMessage('Skriv in ett namn tack')
+            
+        }
+        else{
+           
+            let addNewChar=[...favorites, character]
+            setFavorites(addNewChar)
+            setVadlidateMessage('')
+            setSubMskClassName('submitted')
 
-       }
-       else{
-        setSubmitMessage('May the force be with you.')
-        let addNewChar=[...favorites, character]
-        setFavorites(addNewChar)
-       }
+        }
+      
 
-     
 
     }
-
-    // const validateForm=()=>{
-        
-    // }
 
     return (
       
@@ -60,33 +67,36 @@ const AddOwnCharacter=({favorites, setFavorites})=>{
 
         <div className='formImage'></div>
 
-        <div className='formContainer'>
-            <h2>Add your own favorite</h2>
+            <div className='formContainer'>
+                <h2>Add your own favorite</h2>
 
-            <form>
+                <form className='add-form'>
 
-                <label>Name</label>
-                <input type='text' id="fName" 
-                onChange={event=>(handleInputValue(event, 'name'))}/>
+                    <label>Name</label>
+                    <input type='text' id="fName" 
+                    onChange={event=>(handleInputValue(event, 'name'))}/>
+                    <strong className='validate-message'>{validateMessage}</strong> 
+                    
+                    <label>Birthyear</label>
+                    <input type='number' id="hWorld" 
+                    onChange={event=>(handleInputValue(event, 'year'))}/>
+                    
+                    <label>Haircolor</label>
+                    <input type='text' id="haircolor"  
+                    onChange={event=>(handleInputValue(event, 'haircolor'))}/>
+                    
+                    <label>Skincolor</label>
+                    <input type='text' id="skincolor"
+                    onChange={event=>(handleInputValue(event, 'skincolor'))}/>
+
+                </form>
+
+                <button className='submit-button' onClick={handleSubmit}>Use the force!</button>
+                <h3 className={subMsgClassName}>{submitMessage}</h3>
                 
-                <label>Birthyear</label>
-                <input type='number' id="hWorld" 
-                onChange={event=>(handleInputValue(event, 'year'))} />
-
-                <label>Haircolor</label>
-                <input type='text' id="haircolor"  
-                onChange={event=>(handleInputValue(event, 'haircolor'))}/>
-
-                <label>Skincolor</label>
-                <input type='text' id="skincolor"
-                onChange={event=>(handleInputValue(event, 'skincolor'))}/>
-
-            </form>
-
-            <button className='submit-button' onClick={handleSubmit}>Use the force!</button>
-            <p className='submit-message'>Submit: {subtmitMessage}</p>
-           
-        </div>
+             
+            
+            </div>
     </div>
 
 

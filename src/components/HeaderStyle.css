@@ -7,7 +7,6 @@ header{
 
   }
   .headerLogo{
-    /* color:rgb(255, 238, 0); */
     margin:0;
     font-size:1em;
     font-family:'Libre Franklin', sans-serif;
@@ -28,7 +27,7 @@ header{
   }
   .nav-not-active{
     display:inline-block;
-    border:2px solid #202020;
+    border:2px solid #20202000;
     padding:0.3em;
     align-self:center;
     margin-left:1em;
@@ -40,7 +39,7 @@ header{
     transition:all 0.3s ease 0s; 
     cursor:pointer;
 } 
-  .nav-active{
+.nav-active{
     display:inline-block;
     border:2px solid goldenrod;
     background-color:goldenrod;
@@ -49,17 +48,25 @@ header{
     align-self:center;
     margin-left:1em;
     opacity:.8;
-  }
-  .nav-active:hover{
+}
+.nav-active:hover{
       border:2px solid goldenrod;
       transition:all 0.3s ease 0s; 
       cursor:pointer;
-  }
- 
-  /* .navbar > p{
-    display:inline-block;
-    border:2px solid #202020;
-    padding:0.3em;
-  } */
+}
+.not-submitted{
+    color:rgba(255, 255, 255, 0);
+    text-align:center;
+    margin-top:0;
+    padding:.3em;
+}
+.submitted{
+    color:white;
+    text-align:center;
+    font-weight:800;
+    background-color:rgba(0, 0, 0, 0.507);
+    padding:.3em;
+    margin-top:0;
+}
 
    

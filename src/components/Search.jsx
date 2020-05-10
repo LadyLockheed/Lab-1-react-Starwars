@@ -7,7 +7,6 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
    const [searchParams, setSearchParams]=useState('')
 
    //lägger till favoriter till lista
-    //!OBS måste kolla så att det valda objektet inte redan finns med i listan.
     function handleAddToFavorites(newItem){
 
         if(favorites.some(favItem=>favItem.name===newItem.name)){
