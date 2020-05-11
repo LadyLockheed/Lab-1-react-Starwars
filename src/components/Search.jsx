@@ -5,6 +5,7 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
 
    const [category, setCategory]=useState('PEOPLE')
    const [searchParams, setSearchParams]=useState('')
+   const [favheart, setfaveheart]=useState('')
 
    //lägger till favoriter till lista
     function handleAddToFavorites(newItem){
@@ -18,8 +19,7 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
         }
   
     } 
-    // const [heartClassName, setHeartClassName]=useState('')
-    //TODO den ska kolla mot favoritlistan, om en dublett finns där ska den använda ifyllda hjärtat. Om ej ska den använda andra hjärtat.
+
     //Renderar listan people utifrån om och vad man skrivit i searchrutan
     let jsxListPeople=peopleData.filter(person=>
         person.name.toLowerCase().includes(searchParams.toLowerCase()) 
@@ -27,13 +27,6 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
     ||  person.birth_year.toLowerCase().includes(searchParams.toLowerCase())
     ||  person.skin_color.toLowerCase().includes(searchParams.toLowerCase())
     ).map((person)=>{
-
-        // if(favorites.some(favItem=>favItem.name==person.name)){
-        //     setHeartClassName('filled-heart')
-        // }
-        // else{
-        //    setHeartClassName('empty-heart')
-        // }
 
        return <div key={person.name}  className='card'>
         {/* <div className={heartClassName}></div> */}

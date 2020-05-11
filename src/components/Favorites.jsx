@@ -8,6 +8,12 @@ const Favorites=({favorites, setFavorites})=>{
     const handleRemove=itemToRemove=>setFavorites(favorites.filter(item=>item !==itemToRemove))
     
     let imageClassName=null;
+    let category1=null
+    let category2=null
+    let category3=null
+    let categoryItem1=null
+    let categoryItem2=null
+    let categoryItem3=null
     //ALLA
     let jsxListAll=favorites.map((item)=>{
 
@@ -17,6 +23,22 @@ const Favorites=({favorites, setFavorites})=>{
         else{
             imageClassName='image-user'
         }
+        if (item.terrain!==undefined){
+            category1='Climate: '
+            category2='Terrain: '
+            category3='Gravity: '
+            categoryItem1=item.climate
+            categoryItem2=item.terrain
+            categoryItem3=item.gravity
+        }
+        else{
+            category1='Birthyear: '
+            category2='Haircolor: '
+            category3='Skincolor: '
+            categoryItem1=item.birth_year
+            categoryItem2=item.hair_color
+            categoryItem3=item.skin_color
+        }
         return (<div key={item.name}  className='card'>
         
             <div className='top-wrapper'> 
@@ -24,9 +46,9 @@ const Favorites=({favorites, setFavorites})=>{
                 <div className={imageClassName}></div>     
             </div>
            
-            <p>Birthyear: {item.birth_year}</p>
-            <p>Haircolor: {item.hair_color}</p>
-            <p>Skincolor: {item.skin_color}</p>
+            <p>{category1} {categoryItem1}</p>
+            <p>{category2} {categoryItem2}</p>
+            <p>{category3} {categoryItem3}</p>
     
             <button className="card-button" onClick={()=>handleRemove(item)}>Ta bort ur favoriter</button>
         </div>)

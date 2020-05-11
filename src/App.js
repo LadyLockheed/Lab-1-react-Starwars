@@ -12,7 +12,7 @@ function App() {
   const[peopleData, setPeopleData]=useState([])
   const[planetsData, setPlanetsData]=useState([])
   const[displayPage, setDisplayPage]=useState('FAVORITES')
-  const[favorites, setFavorites]=useState([{name:'Minion',birth_year:'22bc',hair_color:'black',skin_color:'yellow', created:'by-me'}, {name:'E.T', birth_year:'1982', hair_color:'none', skin_color:'brown', created:'by-me'}])
+  const[favorites, setFavorites]=useState([{name:'Minion',birth_year:'22bc',hair_color:'black',skin_color:'yellow', created:'by-me'}, {name:'E.T', birth_year:'1982', hair_color:'none', skin_color:'brown', created:'by-me'},{name:'Earth', terrain:'everything', climate:'warm and cold', gravity:'lagom'}])
 
   let currentPage=null;
   let welcomeText=null;
