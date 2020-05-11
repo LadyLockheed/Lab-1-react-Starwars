@@ -10,11 +10,11 @@ import './App.css';
 
 function App() {
 
-  let developObject=[{name:'Minion',birth_year:'22bc',hair_color:'black',skin_color:'yellow', created:'by-me'}, {name:'E.T', birth_year:'1982', hair_color:'none', skin_color:'brown', created:'by-me'},{name:'Earth', terrain:'everything', climate:'warm and cold', gravity:'lagom'}]
+  let developObject=[{name:'Minion',birth_year:'22bc',hair_color:'black',skin_color:'yellow', created:'nåt datum'}, {name:'E.T', birth_year:'1982', hair_color:'none', skin_color:'brown', created:'by-me'},{name:'Earth', terrain:'everything', climate:'warm and cold', gravity:'lagom'}]
 
   const[peopleData, setPeopleData]=useState([])
   const[planetsData, setPlanetsData]=useState([])
-  const[displayPage, setDisplayPage]=useState('WELCOME')
+  const[displayPage, setDisplayPage]=useState('ADD')
   const[favorites, setFavorites]=useState(developObject)
 
   let currentPage=null;

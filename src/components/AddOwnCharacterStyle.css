@@ -1,6 +1,5 @@
 .add{
 
-    /* padding-top:3.5em; */
 }
 .wrapper{
     border:2px solid rgb(161, 161, 161);
@@ -11,6 +10,7 @@
     margin-right:10%;
     margin-top:4rem;
     font-size:0.7em;
+    min-height:399.99px;
 
 } .formImage{
     background-image:url('../images/stormtrooperonkeyboard.jpg');

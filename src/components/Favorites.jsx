@@ -9,6 +9,7 @@ const Favorites=({favorites, setFavorites})=>{
         itemToRemove.favorite=false;
         setFavorites(favorites.filter(item=>item !==itemToRemove))
     }
+  
     //variabler för vilken knapp som är aktiv
     let favAllButton='fav-not-active';
     let favPeopleButton='fav-not-active';
@@ -82,7 +83,7 @@ const Favorites=({favorites, setFavorites})=>{
             <p>{category2} {categoryItem2}</p>
             <p>{category3} {categoryItem3}</p>
     
-            <button className="card-button" onClick={()=>handleRemove(item)}>Ta bort ur favoriter</button>
+            <div className='favorite' onClick={()=>handleRemove(item)} ></div>
         </div>)
  
     })//slut jsxList

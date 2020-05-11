@@ -22,7 +22,7 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
     } 
 
     let cardButtonCss=null
-    let buttonDisabled=null;
+    
 
     //Renderar listan people utifrån om och vad man skrivit i searchrutan
     let jsxListPeople=peopleData.filter(person=>
@@ -48,7 +48,7 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
                 <p>Birthyear: {person.birth_year}</p>
                 <p>Haircolor: {person.hair_color}</p>
                 <p>Skincolor: {person.skin_color}</p>
-                <div className={cardButtonCss} disabled={buttonDisabled} onClick={()=>handleAddToFavorites(person)} ></div>
+                <div className={cardButtonCss} onClick={()=>handleAddToFavorites(person)} ></div>
             </div>)
     
     })
@@ -77,7 +77,7 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
                 <p>Climate: {planet.climate}</p>
                 <p>Terrain: {planet.terrain}</p>
                 <p>Gravity: {planet.gravity}</p>
-                <div className={cardButtonCss} disabled={buttonDisabled} onClick={()=>handleAddToFavorites(planet)} ></div>
+                <div className={cardButtonCss} onClick={()=>handleAddToFavorites(planet)} ></div>
             </div>)
     })  
 

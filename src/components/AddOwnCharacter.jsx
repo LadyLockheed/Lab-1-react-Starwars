@@ -4,14 +4,21 @@ import './AddOwnCharacterStyle.css'
 const AddOwnCharacter=({favorites, setFavorites})=>{
 
     const [validateMessage, setVadlidateMessage]=useState('')
-    const [subMsgClassName, setSubMskClassName]=useState('not-submitted')
- 
+    const [subMsgClassName, setSubMsgClassName]=useState('not-submitted')
+
+    //TODO Ändra inputstates så de inte heter birthyear osv, utan funkar för både people och planet
+    const [inputName, setInputName]=useState('')
+    const [inputbirthyear, setbirthyear]=useState('')
+    const [inputhaircolor, sethaircolor]=useState('')
+    const [inputskincolor, setskincolor]=useState('')
+
+
     //ny karaktär läggs in  i detta objektet
     let character={ 
-        name:'',
-        birth_year:'unknown',
-        hair_color:'unknown',
-        skin_color:'unknown',
+        name:inputName,
+        birth_year:inputbirthyear,
+        hair_color:inputhaircolor,
+        skin_color:inputskincolor,
         created:'by-me',
         favorite:true
     }
@@ -19,19 +26,19 @@ const AddOwnCharacter=({favorites, setFavorites})=>{
     //tar hand om det som skrivits i inputfälten
     const handleInputValue=(event, inputField)=>{
 
-        setSubMskClassName('not-submitted')
+        setSubMsgClassName('not-submitted')
 
         if (inputField==='name'){
-            character.name=event.target.value;
+            setInputName(event.target.value)  
         }
         else if (inputField==='year'){
-            character.birth_year=event.target.value;
+            setbirthyear(event.target.value)
         }
         else if (inputField==='haircolor'){
-            character.hair_color=event.target.value;
+            sethaircolor(event.target.value)
         }
         else if (inputField==='skincolor'){
-            character.skin_color=event.target.value;
+            setskincolor(event.target.value)
         }
            
     }
@@ -49,13 +56,15 @@ const AddOwnCharacter=({favorites, setFavorites})=>{
             let addNewChar=[...favorites, character]
             setFavorites(addNewChar)
             setVadlidateMessage('')
-            setSubMskClassName('submitted')
-            setValue('')
+            setSubMsgClassName('submitted')
+            setInputName('')
+            setbirthyear('')
+            sethaircolor('')
+            setskincolor('')
         }
     }
 
-    const [testvalue, setValue]=useState('')
-    console.log(testvalue)
+    
     return (
       
         <div className='wrapper'>
@@ -66,9 +75,30 @@ const AddOwnCharacter=({favorites, setFavorites})=>{
                 <h2>Add your own favorite</h2>
 
                 <form className='add-form'>
-                <input type='text' onChange={event=>setValue(event.target.value)}/>
+                   
 
                     <label>Name</label>
+                    <input type='text' id="fName"
+                    value={inputName}
+                    onChange={event=>(handleInputValue(event, 'name'))}/>
+                    <strong className='validate-message'>{validateMessage}</strong> 
+                    
+                    <label>Birthyear</label>
+                    <input type='number' id="hWorld"
+                     value={inputbirthyear} 
+                    onChange={event=>(handleInputValue(event, 'year'))}/>
+                    
+                    <label>Haircolor</label>
+                    <input type='text' id="haircolor"
+                    value={inputhaircolor}   
+                    onChange={event=>(handleInputValue(event, 'haircolor'))}/>
+                    
+                    <label>Skincolor</label>
+                    <input type='text' id="skincolor"
+                    value={inputskincolor} 
+                    onChange={event=>(handleInputValue(event, 'skincolor'))}/>
+
+                    {/* <label>Name</label>
                     <input type='text' id="fName"
                     onChange={event=>(handleInputValue(event, 'name'))}/>
                     <strong className='validate-message'>{validateMessage}</strong> 
@@ -83,7 +113,7 @@ const AddOwnCharacter=({favorites, setFavorites})=>{
                     
                     <label>Skincolor</label>
                     <input type='text' id="skincolor"
-                    onChange={event=>(handleInputValue(event, 'skincolor'))}/>
+                    onChange={event=>(handleInputValue(event, 'skincolor'))}/> */}
 
                 </form>
 
