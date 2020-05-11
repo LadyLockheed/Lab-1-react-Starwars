@@ -10,13 +10,26 @@
     display:flex;
     justify-content:center;
 }
-.button-container-favorites > button{
+.fav-not-active{
+    border:1px solid rgb(95, 95, 95);
+    background-color:rgb(75, 75, 75);;
+    color:white;
     padding:0.5em 1em;
     margin:1em;
     border-radius:5px;
-    border:none;
 }
-.button-container-favorites > button:hover{
+.fav-not-active:hover{
+    cursor:pointer;
+}
+.fav-active{
+    background-color:goldenrod;
+    color:black;
+    border:1px solid black;
+    padding:0.5em 1em;
+    margin:1em;
+    border-radius:5px;
+}
+.fav-active:hover{
     cursor:pointer;
 }
 .by-me{  
@@ -27,7 +40,6 @@
     color:white;
 
 }
-
 .card{
     background-color:rgba(141, 141, 141, 0.5);
     font-size: .7em;
@@ -52,7 +64,6 @@
     justify-self: right;
     margin:0.5em;
     opacity: .5;
-  
 }
 .image-globe{
     height:20px;

@@ -3,7 +3,7 @@ import './FavoritesStyle.css'
 
 const Favorites=({favorites, setFavorites})=>{
 
-    const [displayList, setDisplayList]=useState('')
+    const [displayList, setDisplayList]=useState('ALL')
 
     const handleRemove=itemToRemove=>setFavorites(favorites.filter(item=>item !==itemToRemove))
     
@@ -105,29 +105,36 @@ const Favorites=({favorites, setFavorites})=>{
 
 
     let currentList=null;
+    let favAllButton='fav-not-active';
+    let favPeopleButton='fav-not-active';
+    let favPlanetsButton='fav-not-active';
+    
 
     switch(displayList){
 
         case 'ALL':
             currentList=jsxListAll
+            favAllButton='fav-active'
         break;
         case 'PEOPLE':
             currentList=jsxListPeople
+            favPeopleButton='fav-active'
         break;
         case 'PLANETS':
             currentList=jsxListPlanets
+            favPlanetsButton='fav-active'
         break;
         default:
-            currentList=jsxListAll
+           console.log('Sidan finns ej')
 
     }
 
     return(
         <div>
             <div className='button-container-favorites'>
-                <button onClick={()=>setDisplayList('ALL')}>All</button>
-                <button onClick={()=>setDisplayList('PEOPLE')}>People</button>
-                <button onClick={()=>setDisplayList('PLANETS')}>Planets</button>
+                <button className={favAllButton} onClick={()=>setDisplayList('ALL')}>All</button>
+                <button className={favPeopleButton} onClick={()=>setDisplayList('PEOPLE')}>People</button>
+                <button className={favPlanetsButton} onClick={()=>setDisplayList('PLANETS')}>Planets</button>
             </div>
             
             <div className='grid-container-favorites'>
