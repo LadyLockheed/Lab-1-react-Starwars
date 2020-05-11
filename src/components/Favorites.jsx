@@ -2,20 +2,52 @@ import React, {useState} from 'react'
 import './FavoritesStyle.css'
 
 const Favorites=({favorites, setFavorites})=>{
-
+  
     const [displayList, setDisplayList]=useState('ALL')
 
-    const handleRemove=itemToRemove=>setFavorites(favorites.filter(item=>item !==itemToRemove))
+    const handleRemove=itemToRemove=>{
+        itemToRemove.favorite=false;
+        setFavorites(favorites.filter(item=>item !==itemToRemove))
+    }
+    //variabler för vilken knapp som är aktiv
+    let favAllButton='fav-not-active';
+    let favPeopleButton='fav-not-active';
+    let favPlanetsButton='fav-not-active';
+    //variabler för att styra vilken lista som ska användas i .map funktionen
+    let currentList=null;
+    let jsxListPeople=favorites.filter(item=>item.birth_year!==undefined)
+    let jsxListPlanets=favorites.filter(item=>item.birth_year===undefined)
+     //variabler för att styra vilken text som ska renderas beroende på people/planets
+     let imageClassName=null;
+     let category1=null
+     let category2=null
+     let category3=null
+     let categoryItem1=null
+     let categoryItem2=null
+     let categoryItem3=null
     
-    let imageClassName=null;
-    let category1=null
-    let category2=null
-    let category3=null
-    let categoryItem1=null
-    let categoryItem2=null
-    let categoryItem3=null
-    //ALLA
-    let jsxListAll=favorites.map((item)=>{
+    switch(displayList){
+
+        case 'ALL':
+            currentList=favorites
+            favAllButton='fav-active'
+        break;
+        case 'PEOPLE':
+            currentList=jsxListPeople
+            favPeopleButton='fav-active'
+        break;
+        case 'PLANETS':
+            currentList=jsxListPlanets
+            favPlanetsButton='fav-active'
+        break;
+        default:
+           console.log('Sidan finns ej')
+           currentList=favorites
+           favAllButton='fav-active'
+
+    }
+
+    let jsxList=currentList.map((item)=>{
 
         if(item.created!=='by-me'){
             imageClassName='image-globe'
@@ -53,82 +85,8 @@ const Favorites=({favorites, setFavorites})=>{
             <button className="card-button" onClick={()=>handleRemove(item)}>Ta bort ur favoriter</button>
         </div>)
  
-    })//slut jsxListALL
-    //PEOPLE
-    let jsxListPeople=favorites.filter(item=> item.birth_year!==undefined).map(person=>{
-
-        if(person.created!=='by-me'){
-            imageClassName='image-globe'
-        }
-        else{
-            imageClassName='image-user'
-        }
+    })//slut jsxList
     
-        return (<div key={person.name}  className='card'>
-        
-            <div className='top-wrapper'> 
-                <h2>{person.name}</h2>  
-                <div className={imageClassName}></div>     
-            </div>
-           
-            <p>Birthyear: {person.birth_year}</p>
-            <p>Haircolor: {person.hair_color}</p>
-            <p>Skincolor: {person.skin_color}</p>
-    
-            <button className="card-button" onClick={()=>handleRemove(person)}>Ta bort ur favoriter</button>
-        </div>)
-       })
-       //PLANETS
-       let jsxListPlanets=favorites.filter(item=> item.terrain!==undefined).map(planet=>{
-
-        if(planet.created!=='by-me'){
-            imageClassName='image-globe'
-        }
-        else{
-            imageClassName='image-user'
-        }
-    
-        return (<div key={planet.name}  className='card'>
-        
-            <div className='top-wrapper'> 
-                <h2>{planet.name}</h2>  
-                <div className={imageClassName}></div>     
-            </div>
-           
-            <p>Climate: {planet.climate}</p>
-            <p>Terrain: {planet.terrain}</p>
-            <p>Gravity: {planet.gravity}</p>
-    
-            <button className="card-button" onClick={()=>handleRemove(planet)}>Ta bort ur favoriter</button>
-        </div>)
-       })
-
-
-    let currentList=null;
-    let favAllButton='fav-not-active';
-    let favPeopleButton='fav-not-active';
-    let favPlanetsButton='fav-not-active';
-    
-
-    switch(displayList){
-
-        case 'ALL':
-            currentList=jsxListAll
-            favAllButton='fav-active'
-        break;
-        case 'PEOPLE':
-            currentList=jsxListPeople
-            favPeopleButton='fav-active'
-        break;
-        case 'PLANETS':
-            currentList=jsxListPlanets
-            favPlanetsButton='fav-active'
-        break;
-        default:
-           console.log('Sidan finns ej')
-
-    }
-
     return(
         <div>
             <div className='button-container-favorites'>
@@ -138,8 +96,7 @@ const Favorites=({favorites, setFavorites})=>{
             </div>
             
             <div className='grid-container-favorites'>
-                {currentList}
-               
+                {jsxList}
 
             </div>
 

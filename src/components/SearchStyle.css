@@ -1,12 +1,12 @@
+
 .grid-container{
     padding:2em;
     display:grid;
     grid-template-columns:repeat(4, 1fr);
     gap:1em;
-    
+
 }
 .buttons-container{
-   
     display:flex;
     justify-content:center;
 }
@@ -71,9 +71,9 @@
 }
 .card{
     background-color:rgba(141, 141, 141, 0.5);
-    min-height:180px;
+    /* min-height:180px; */
     font-size: .7em;
-    text-align: center;
+    /* text-align: center; */
     border-radius:5px;
     color:white; 
 }
@@ -84,18 +84,31 @@
     margin-left:.5em;
     margin-right:.5em;
 }
-.card > .filled-heart{
+.favorite{
     height:20px;
     width:20px;
     background-image:url('../images/heartfilled.png');
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    margin:.5em;
+   
 }
-.card > .empty-heart{
+.no-favorite{
     height:20px;
     width:20px;
     background-image:url('../images/heartwhite.png');
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    margin:.5em;
+    
+}
+.favorite:hover, .no-favorite:hover{
+    cursor:pointer;
 }
 
-.card-button{
+/* .card-button{
     background-color:rgb(70, 70, 70);
     border:1px solid white;
     border-radius:5px;
@@ -108,7 +121,7 @@
 .card-button:hover {
     background-color:black;
     cursor:pointer;
-}
+} */
 .to-the-top{
     background-color:orange;
     position: fixed;

@@ -5,20 +5,24 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
 
    const [category, setCategory]=useState('PEOPLE')
    const [searchParams, setSearchParams]=useState('')
-   const [favheart, setfaveheart]=useState('')
 
    //lägger till favoriter till lista
     function handleAddToFavorites(newItem){
 
-        if(favorites.some(favItem=>favItem.name===newItem.name)){
-            console.log('Favoriten finns redan')
+        if(favorites.some(item=>item.name===newItem.name)){
+            newItem.favorite=false;
+            setFavorites(favorites.filter(item=>item !==newItem))
         }
         else{
+            newItem.favorite=true
             let newFavorite=[...favorites, newItem]
             setFavorites(newFavorite)
         }
-  
+      
     } 
+
+    let cardButtonCss=null
+    let buttonDisabled=null;
 
     //Renderar listan people utifrån om och vad man skrivit i searchrutan
     let jsxListPeople=peopleData.filter(person=>
@@ -28,14 +32,24 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
     ||  person.skin_color.toLowerCase().includes(searchParams.toLowerCase())
     ).map((person)=>{
 
-       return <div key={person.name}  className='card'>
-        {/* <div className={heartClassName}></div> */}
-            <h2 className={person.gender}>{person.name}</h2>
-            <p>Birthyear: {person.birth_year}</p>
-            <p>Haircolor: {person.hair_color}</p>
-            <p>Skincolor: {person.skin_color}</p>
-            <button className='card-button' onClick={()=>handleAddToFavorites(person)}>Like</button>
-        </div>
+        //ändrar likeknappen beroende på om objektet är favorit eller ej
+        if (person.favorite===true){
+            // buttonDisabled=true;
+            cardButtonCss='favorite'
+        }
+        else{
+            // buttonDisabled=false;
+            cardButtonCss='no-favorite'
+        }
+
+        return(
+            <div key={person.name}  className='card'>
+                <h2 className={person.gender}>{person.name}</h2>
+                <p>Birthyear: {person.birth_year}</p>
+                <p>Haircolor: {person.hair_color}</p>
+                <p>Skincolor: {person.skin_color}</p>
+                <div className={cardButtonCss} disabled={buttonDisabled} onClick={()=>handleAddToFavorites(person)} ></div>
+            </div>)
     
     })
 
@@ -45,18 +59,29 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
     ||  planet.climate.toLowerCase().includes(searchParams.toLowerCase())
     ||  planet.terrain.toLowerCase().includes(searchParams.toLowerCase()) 
     ||  planet.gravity.toLowerCase().includes(searchParams.toLowerCase()) 
-    ).map((planet)=>
+    ).map((planet)=>{
 
-        <div key={planet.name}  className='card'>
-            <h2>{planet.name}</h2>
-            <p>Climate: {planet.climate}</p>
-            <p>Terrain: {planet.terrain}</p>
-            <p>Gravity: {planet.gravity}</p>
-            <button className='card-button' onClick={()=>handleAddToFavorites(planet)}>Like</button>
-        </div>
-    )  
+         //ändrar likeknappen beroende på om objektet är favorit eller ej
+         if (planet.favorite===true){
+            // buttonDisabled=true;
+            cardButtonCss='favorite'
+        }
+        else{
+            // buttonDisabled=false;
+            cardButtonCss='no-favorite'
+        }
 
-    //variabler som styr classnamn för knappar
+        return (
+            <div key={planet.name}  className='card'>
+                <h2>{planet.name}</h2>
+                <p>Climate: {planet.climate}</p>
+                <p>Terrain: {planet.terrain}</p>
+                <p>Gravity: {planet.gravity}</p>
+                <div className={cardButtonCss} disabled={buttonDisabled} onClick={()=>handleAddToFavorites(planet)} ></div>
+            </div>)
+    })  
+
+    //variabler som styr classnamn för kategoriknappar
     let currentCategory=null;
     let peoplebutton='not-active'
     let planetsbutton='not-active'
@@ -83,31 +108,30 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
     return(
 
         <div className='search-comp'>
-        <div className='buttons-container'>
-            <button className={peoplebutton} onClick={()=> setCategory('PEOPLE')}>People</button>
-            <button className={planetsbutton} onClick={()=> setCategory('PLANETS')}>Planets</button>
-        </div>
-        <div className='input-container'>
-            <div className='image-container'>
-                <div className='search-image'></div>
+            <div className='buttons-container'>
+                <button className={peoplebutton} onClick={()=> setCategory('PEOPLE')}>People</button>
+                <button className={planetsbutton} onClick={()=> setCategory('PLANETS')}>Planets</button>
             </div>
-               
-            <input className="searchfield" type='text' 
-                placeholder='Search and you will find....' 
-                value={searchParams}
-                onChange={e=>setSearchParams(e.target.value)}
-                />
-
-        </div>
- 
-            {/* <a id="top">'</a> */}
-                <div className='grid-container'>
-                    {currentCategory}
-                    {/* <a href="#top"> */}
-                        <button className='to-the-top'>To the top</button>
-                    {/* </a> */}
-
+            <div className='input-container'>
+                <div className='image-container'>
+                    <div className='search-image'></div>
                 </div>
+                
+                <input className="searchfield" type='text' 
+                    placeholder='Search and you will find....' 
+                    value={searchParams}
+                    onChange={e=>setSearchParams(e.target.value)}/>
+
+            </div>
+    
+                {/* <a id="top">'</a> */}
+                    <div className='grid-container'>
+                        {currentCategory}
+                        {/* <a href="#top"> */}
+                            <button className='to-the-top'>To the top</button>
+                        {/* </a> */}
+
+                    </div>
 
         </div>
     )

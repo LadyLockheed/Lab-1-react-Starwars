@@ -12,8 +12,8 @@ const AddOwnCharacter=({favorites, setFavorites})=>{
         birth_year:'unknown',
         hair_color:'unknown',
         skin_color:'unknown',
-        created:'by-me'
-
+        created:'by-me',
+        favorite:true
     }
 
     //tar hand om det som skrivits i inputfälten
@@ -36,7 +36,6 @@ const AddOwnCharacter=({favorites, setFavorites})=>{
            
     }
 
-   
     let submitMessage='Added new character you have. May the force be with you.'
     const handleSubmit=()=>{
 
@@ -51,11 +50,12 @@ const AddOwnCharacter=({favorites, setFavorites})=>{
             setFavorites(addNewChar)
             setVadlidateMessage('')
             setSubMskClassName('submitted')
-
+            setValue('')
         }
-
     }
 
+    const [testvalue, setValue]=useState('')
+    console.log(testvalue)
     return (
       
         <div className='wrapper'>
@@ -66,9 +66,10 @@ const AddOwnCharacter=({favorites, setFavorites})=>{
                 <h2>Add your own favorite</h2>
 
                 <form className='add-form'>
+                <input type='text' onChange={event=>setValue(event.target.value)}/>
 
                     <label>Name</label>
-                    <input type='text' id="fName" 
+                    <input type='text' id="fName"
                     onChange={event=>(handleInputValue(event, 'name'))}/>
                     <strong className='validate-message'>{validateMessage}</strong> 
                     

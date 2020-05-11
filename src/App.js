@@ -3,16 +3,19 @@ import AddOwnCharacter from './components/AddOwnCharacter'
 import Header from './components/Header'
 import Search from './components/Search'
 import Favorites from './components/Favorites'
+import FavoriteAll from './components/FavoriteAll'
 
 import './App.css';
 
 
 function App() {
 
+  let developObject=[{name:'Minion',birth_year:'22bc',hair_color:'black',skin_color:'yellow', created:'by-me'}, {name:'E.T', birth_year:'1982', hair_color:'none', skin_color:'brown', created:'by-me'},{name:'Earth', terrain:'everything', climate:'warm and cold', gravity:'lagom'}]
+
   const[peopleData, setPeopleData]=useState([])
   const[planetsData, setPlanetsData]=useState([])
-  const[displayPage, setDisplayPage]=useState('FAVORITES')
-  const[favorites, setFavorites]=useState([{name:'Minion',birth_year:'22bc',hair_color:'black',skin_color:'yellow', created:'by-me'}, {name:'E.T', birth_year:'1982', hair_color:'none', skin_color:'brown', created:'by-me'},{name:'Earth', terrain:'everything', climate:'warm and cold', gravity:'lagom'}])
+  const[displayPage, setDisplayPage]=useState('WELCOME')
+  const[favorites, setFavorites]=useState(developObject)
 
   let currentPage=null;
   let welcomeText=null;
@@ -57,7 +60,9 @@ function App() {
       let responseFirstPage= await fetch(baseUrl+category)
       let resultFirstPage=await responseFirstPage.json()
        
-      //lägger in resultatet på tom datalist
+      //lägger in ny egenskap: favorite=false
+      resultFirstPage.results.forEach(element=>element.favorite=false)
+      //lägger in resultatet på tom datalista
       resultFirstPage.results.forEach(element=>data.push(element))
 
       let next=resultFirstPage.next
@@ -68,6 +73,9 @@ function App() {
          
           let response=await fetch (baseUrl+category+'/?page='+pageNumber)
           let result=await response.json()
+
+          //lägger in ny egenskap: favorite=false
+          resultFirstPage.results.forEach(element=>element.favorite=false)
 
           result.results.forEach(element=>data.push(element))
           pageNumber++
@@ -98,7 +106,7 @@ useEffect(()=>{
     <div className="App">
       <Header displayPage={displayPage} setDisplayPage={setDisplayPage}/>
 
-   
+    <FavoriteAll/>
      
      {currentPage}
      {welcomeText}
