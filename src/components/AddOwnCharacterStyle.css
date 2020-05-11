@@ -1,5 +1,15 @@
-.add{
+.category-container{
+ 
 
+}
+.labelforbox{
+   
+    color:white;
+    /* display:inline-block; */
+}
+.box{
+    background-color:green;
+    color:white;
 }
 .wrapper{
     border:2px solid rgb(161, 161, 161);
