@@ -45,9 +45,9 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
         return(
             <div key={person.name}  className='card'>
                 <h2 className={person.gender}>{person.name}</h2>
-                <p>Birthyear: {person.birth_year}</p>
-                <p>Haircolor: {person.hair_color}</p>
-                <p>Skincolor: {person.skin_color}</p>
+                <p>Birt hyear: {person.birth_year}</p>
+                <p>Hair color: {person.hair_color}</p>
+                <p>Skin color: {person.skin_color}</p>
                 <div className={cardButtonCss} onClick={()=>handleAddToFavorites(person)} ></div>
             </div>)
     

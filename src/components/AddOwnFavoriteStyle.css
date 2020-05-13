@@ -1,53 +1,63 @@
-.category-container{
- 
 
-}
-.labelforbox{
-   
-    color:white;
-    /* display:inline-block; */
-}
-.box{
-    background-color:green;
-    color:white;
-}
+
 .wrapper{
     border:2px solid rgb(161, 161, 161);
+   
     border-radius: 10px;
     display:grid;
     grid-template-columns: repeat(10, 1fr);
-    margin-left:10%;
+    margin-left:3em;
     margin-right:10%;
-    margin-top:4rem;
+    margin-top:1rem;
     font-size:0.7em;
-    min-height:399.99px;
+    min-height:423.27px;
+   
 
 } .formImage{
     background-image:url('../images/stormtrooperonkeyboard.jpg');
     background-size:cover;
     background-position:center;
     border-radius:5px 0px 0px 5px;
-    grid-column: 1/5;
+    grid-column: 1/4;
   
 }
 .formContainer{
-    grid-column:5/11;
+    grid-column:4/11;
     padding:0.2em 4em;
-    display:grid;
+
 }
-form{
-    display:flex;
-    flex-direction:column;
+.add-form{
+    /* display:flex;
+    flex-direction:column; */
+  margin-top:0;
+    min-height:267.44px;
+    
 }
+.label-for-category{
+    color: white;
+}
+.wrapper-era{
+    margin-left:.5em;
+    /* display:inline-block; */
+ }
+.label-era{
+    color:white;
+      
+}
+
 .formContainer > h2 {
     color:white;
     font-size:1.5em;
     font-weight:200;
+
 }
 .add-form > label{  
     color:white;
     margin-top:1em;
     margin-bottom:0.3em;
+    
+    display:block;
+    /* font-size:1em; */
 
 }
 .add-form > input{
@@ -55,21 +65,44 @@ form{
     border:none;
     border-radius:5px;
     opacity:.5;
+    /* max-width:17.5em;
+    display:inline-block; */
+    
 
 }
 .add-form > input:hover, input:focus{
     opacity:.9;
 }
+.invalid{
+    outline: 2px solid red;
+
+}
+.invalid-message{
+    display:none;
+}
+/* + betyder sibling, direkt efterföljande syskon, skillnad på detta och >  */
+.invalid + .invalid-message{
+    
+    color:red;
+    display:inline-block;
+    margin-left:1em;
+    font-size:1em;
+}
+
 .submit-button{
-    justify-self: center;
+    margin-left:1.4em;
     margin-top:2em;
     margin-bottom:1em;
     padding:0.5em;
-    width:50%;
+    width:10em;
     border:1px solid white;
     background-color:black;
     color:white;
     border-radius:5px;
+    display:block;
+}
+.submit-button:disabled{
+    background-color:rgb(148, 121, 121);
 }
 .submit-button:hover{
     cursor:pointer;
@@ -79,13 +112,7 @@ form{
     justify-self:center;
 
 }
-.validate-message{
-    color:red;
-    display:inline-block;
-    
-    
-    /* padding:.3em; */
-}
+
 
 
 

@@ -11,9 +11,7 @@ const Favorites=({favorites, setFavorites})=>{
     }
   
     //variabler för vilken knapp som är aktiv
-    let favAllButton='fav-not-active';
-    let favPeopleButton='fav-not-active';
-    let favPlanetsButton='fav-not-active';
+    let favAllButton='fav-not-active' , favPeopleButton='fav-not-active', favPlanetsButton='fav-not-active';
     //variabler för att styra vilken lista som ska användas i .map funktionen
     let currentList=null;
     let jsxListPeople=favorites.filter(item=>item.birth_year!==undefined)
@@ -26,6 +24,8 @@ const Favorites=({favorites, setFavorites})=>{
      let categoryItem1=null
      let categoryItem2=null
      let categoryItem3=null
+    
+     let nofavv=null
     
     switch(displayList){
 
@@ -41,20 +41,22 @@ const Favorites=({favorites, setFavorites})=>{
             currentList=jsxListPlanets
             favPlanetsButton='fav-active'
         break;
+        
         default:
-           console.log('Sidan finns ej')
+           
            currentList=favorites
            favAllButton='fav-active'
 
     }
+    
+    let jsxList=currentList.map((item, index)=>{
 
-    let jsxList=currentList.map((item)=>{
-
-        if(item.created!=='by-me'){
-            imageClassName='image-globe'
+        if(item.created==='by-me'){
+            imageClassName='image-user'
         }
         else{
-            imageClassName='image-user'
+          
+            imageClassName='image-globe'
         }
         if (item.terrain!==undefined){
             category1='Climate: '
@@ -65,14 +67,14 @@ const Favorites=({favorites, setFavorites})=>{
             categoryItem3=item.gravity
         }
         else{
-            category1='Birthyear: '
-            category2='Haircolor: '
-            category3='Skincolor: '
+            category1='Birth year: '
+            category2='Hair color: '
+            category3='Skin color: '
             categoryItem1=item.birth_year
             categoryItem2=item.hair_color
             categoryItem3=item.skin_color
         }
-        return (<div key={item.name}  className='card'>
+        return (<div key={item.name+index}  className='card'>
         
             <div className='top-wrapper'> 
                 <h2>{item.name}</h2>  
@@ -87,7 +89,10 @@ const Favorites=({favorites, setFavorites})=>{
         </div>)
  
     })//slut jsxList
-    
+
+    if (favorites.length===0)
+    return(<div className='nofavv'>There is no spoon....eh....sorry, wrong movie</div>)
+   
     return(
         <div>
             <div className='button-container-favorites'>
@@ -98,6 +103,7 @@ const Favorites=({favorites, setFavorites})=>{
             
             <div className='grid-container-favorites'>
                 {jsxList}
+                {nofavv}
 
             </div>
 

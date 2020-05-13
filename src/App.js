@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import AddOwnCharacter from './components/AddOwnCharacter'
+import AddOwnFavorite from './components/AddOwnFavorite'
 import Header from './components/Header'
 import Search from './components/Search'
 import Favorites from './components/Favorites'
-import FavoriteAll from './components/FavoriteAll'
+// import FavoriteAll from './components/FavoriteAll'
 
 import './App.css';
+
 
 
 function App() {
@@ -14,8 +15,9 @@ function App() {
 
   const[peopleData, setPeopleData]=useState([])
   const[planetsData, setPlanetsData]=useState([])
-  const[displayPage, setDisplayPage]=useState('ADD')
+  const[displayPage, setDisplayPage]=useState('WELCOME')
   const[favorites, setFavorites]=useState(developObject)
+  
 
   let currentPage=null;
   let welcomeText=null;
@@ -31,9 +33,9 @@ function App() {
       break;
     
     case 'ADD':
-      currentPage=<AddOwnCharacter favorites={favorites} setFavorites={setFavorites}/>
+      currentPage=<AddOwnFavorite favorites={favorites} setFavorites={setFavorites}/>
       break;
-
+   
     case 'FAVORITES':
       currentPage=<Favorites favorites={favorites} setFavorites={setFavorites}/>
       break;
@@ -57,8 +59,10 @@ function App() {
       let data=[]
 
       //hämtar första pagen med 10 st people
-      let responseFirstPage= await fetch(baseUrl+category)
-      let resultFirstPage=await responseFirstPage.json()
+      let responseFirstPage= await fetch(baseUrl+category);
+      let resultFirstPage=await responseFirstPage.json();
+    
+    
        
       //lägger in ny egenskap: favorite=false
       resultFirstPage.results.forEach(element=>element.favorite=false)
@@ -72,7 +76,8 @@ function App() {
       while (next!=null){
          
           let response=await fetch (baseUrl+category+'/?page='+pageNumber)
-          let result=await response.json()
+          let result=await response.json();
+         
 
           //lägger in ny egenskap: favorite=false
           resultFirstPage.results.forEach(element=>element.favorite=false)
@@ -106,7 +111,7 @@ useEffect(()=>{
     <div className="App">
       <Header displayPage={displayPage} setDisplayPage={setDisplayPage}/>
 
-    <FavoriteAll/>
+   
      
      {currentPage}
      {welcomeText}
