@@ -3,8 +3,6 @@ import AddOwnFavorite from './components/AddOwnFavorite'
 import Header from './components/Header'
 import Search from './components/Search'
 import Favorites from './components/Favorites'
-// import FavoriteAll from './components/FavoriteAll'
-
 import './App.css';
 
 
@@ -110,9 +108,6 @@ useEffect(()=>{
   return (
     <div className="App">
       <Header displayPage={displayPage} setDisplayPage={setDisplayPage}/>
-
-   
-     
      {currentPage}
      {welcomeText}
       
