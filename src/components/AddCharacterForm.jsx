@@ -21,19 +21,22 @@ const AddCharacterForm=({favorites, setFavorites})=>{
     let filteredPeople=favorites.filter(item=>item.birth_year !==undefined)
     let invalidButton=true
     
+    //För att validera alla inputfält
     let [validName, nameValidMessage] = nameIsValid(name, filteredPeople, isAdded);
     let [validBirthYear, birthYearValidMessage] = birthYearIsValid(birthYear);
     let [validHairColor, hairColorValidMessage] = hairColorIsValid(hairColor);
     let [validSkinColor, skinColorValidMessage] = skinColorIsValid(skinColor);
-   
+    
+    //Kollar om alla inputfält är validerade och ok.
     let isValid=checkIfAllIsValid(validName, validBirthYear, validHairColor, validSkinColor)
     let validEra=true
     let eraValidMessage=''
     
-
+    //Om allt är validerat och ok, låses knappen upp
     if (isValid){
         invalidButton=false;
     }
+    //efter att man addat töms inputfält och touched ställs till false
     useEffect(()=>{
         setName('')
         setHairColor('')
@@ -48,22 +51,23 @@ const AddCharacterForm=({favorites, setFavorites})=>{
    
 
     const handleSubmit=(e)=>{
-        
+         //förhindrar att sidan laddas om när man trycker på knappen inuti Form taggen
         e.preventDefault();
 
-            let newCharacter={ 
-                name:name,
-                birth_year:birthYear+era,
-                hair_color:hairColor,
-                skin_color:skinColor,
-                created:'by-me',
-                favorite:true
-            }
-    
-            let newCharAddedList=[...favorites, newCharacter]
-            setFavorites(newCharAddedList)
-            setSubMsgClassName('submitted')
-            setIsAdded(true)
+        
+        let newCharacter={ 
+            name:name,
+            birth_year:birthYear+era,
+            hair_color:hairColor,
+            skin_color:skinColor,
+            created:'by-me',
+            favorite:true
+        }
+        //lägger till nytt objekt till listan. Skriver ut sucessmeddelande.
+        let newCharAddedList=[...favorites, newCharacter]
+        setFavorites(newCharAddedList)
+        setSubMsgClassName('submitted')
+        setIsAdded(true)
 
     }
  
@@ -71,70 +75,71 @@ const AddCharacterForm=({favorites, setFavorites})=>{
     return (    
 
         <>
-          <label>Name</label>
-          <input type='text' id="fName"
-          value={name}
-          className={!validName && nameIsTouched ? 'invalid' : ''}
-          onBlur={()=>setNameIsTouched(true)}
-          onChange={event=>setName(event.target.value)}/>
-          <strong className='invalid-message'>{nameValidMessage}</strong>
+            <label>Name</label>
+            <input type='text' id="fName"
+            value={name}
+            className={!validName && nameIsTouched ? 'invalid' : ''}
+            onBlur={()=>setNameIsTouched(true)}
+            onChange={event=>setName(event.target.value)}/>
+            <strong className='invalid-message'>{nameValidMessage}</strong>
          
-      
-          <label>Birth year</label>
-          <input type='number' id="bday"
-          value={birthYear}
-          className={!validBirthYear && birthYearIsTouched ? 'invalid' : ''}
-          onBlur={()=>setBirthYearIsTouched(true)} 
-          onChange={event=>setBirthYear(event.target.value)}/>
-           <strong className='invalid-message'>{birthYearValidMessage}</strong>
+            <label>Birth year</label>
+            <input type='number' id="bday"
+            value={birthYear}
+            className={!validBirthYear && birthYearIsTouched ? 'invalid' : ''}
+            onBlur={()=>setBirthYearIsTouched(true)} 
+            onChange={event=>setBirthYear(event.target.value)}/>
+            <strong className='invalid-message'>{birthYearValidMessage}</strong>
           
-
-      <div className='wrapper-era'>
-  
-          <label className='label-era'>BBY</label>
-          <input type='radio' name='swYear'
-        className={!validEra ?  'invalid' : 'input-era'}
-          value={era}
-          onClick={()=>setEra('BBY')}/>
-          
-          <label className='label-era'>ABY</label>
-          <input type='radio' name='swYear'
-          className={!validEra ? 'invalid' : 'input-era'}
-          value={era}
-          onClick={()=>setEra('ABY')}/>
-           <strong className='invalid-message'>{eraValidMessage}</strong>
-          
- 
-      </div>
+            <div className='wrapper-era'>
     
-          <label>Hair color</label>
-          <input type='text' id="haircolor"
-          value={hairColor}
-          className={!validHairColor && hairColorIsTouched ? 'invalid' : ''}
-          onBlur={()=>setHairColorIsTouched(true)}     
-          onChange={event=>setHairColor(event.target.value)}/>
-           <strong className='invalid-message'>{hairColorValidMessage}</strong>
+                <label className='label-era'>BBY</label>
+                <input type='radio' name='swYear'
+                className={!validEra ?  'invalid' : 'input-era'}
+                value={era}
+                onClick={()=>setEra('BBY')}/>
+            
+                <label className='label-era'>ABY</label>
+                <input type='radio' name='swYear'
+                className={!validEra ? 'invalid' : 'input-era'}
+                value={era}
+                onClick={()=>setEra('ABY')}/>
+                <strong className='invalid-message'>{eraValidMessage}</strong>
+            
+    
+            </div>
+    
+            <label>Hair color</label>
+            <input type='text' id="haircolor"
+            value={hairColor}
+            className={!validHairColor && hairColorIsTouched ? 'invalid' : ''}
+            onBlur={()=>setHairColorIsTouched(true)}     
+            onChange={event=>setHairColor(event.target.value)}/>
+            <strong className='invalid-message'>{hairColorValidMessage}</strong>
           
           
-          <label>Skin color</label>
-          <input type='text' id="skincolor"
-          value={skinColor}
-          className={!validSkinColor && skinColorIsTouched ? 'invalid' : ''}
-          onBlur={()=>setSkinColorIsTouched(true)}   
-          onChange={event=>setSkinColor(event.target.value)}/>
-          <strong className='invalid-message'>{skinColorValidMessage}</strong>
+            <label>Skin color</label>
+            <input type='text' id="skincolor"
+            value={skinColor}
+            className={!validSkinColor && skinColorIsTouched ? 'invalid' : ''}
+            onBlur={()=>setSkinColorIsTouched(true)}   
+            onChange={event=>setSkinColor(event.target.value)}/>
+            <strong className='invalid-message'>{skinColorValidMessage}</strong>
 
-          <button className='submit-button' onClick={event=>handleSubmit(event)} disabled={invalidButton}>Use the force!</button>
+            <button className='submit-button' onClick={event=>handleSubmit(event)} disabled={invalidButton}>Use the force!</button>
             <h3 className={subMsgClassName}>{submitMessage}</h3>
             
           
-          </>)
+        </>
+        )
     
 
 }
 
 export default AddCharacterForm
 
+
+//kollar om man fyllt i mer än noll i inputfälten
 const nameIsValid=(name, filteredPeople, isAdded)=>{
 
     if(!isAdded && filteredPeople.some(person=>person.name===name)){
@@ -181,6 +186,7 @@ const skinColorIsValid=(skinColor)=>{
     }
 
 }
+//kollar om alla är ok
 const checkIfAllIsValid=(name, birthyear, haircolor,skincolor)=>{
 
     if (name===true && birthyear===true && haircolor===true && skincolor===true){

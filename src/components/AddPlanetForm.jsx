@@ -20,20 +20,21 @@ const AddPlanetForm=({favorites, setFavorites})=>{
     let filteredPlanets=favorites.filter(item=>item.terrain !==undefined)
     let invalidButton=true
 
-
+    //För att validera alla inputfält
     let [validName, nameValidMessage] = nameIsValid(name, filteredPlanets, isAdded);
     let [validClimate, climateValidMessage] = climateIsValid(climate);
     let [validTerrain, terrainValidMessage] = terrainIsValid(terrain);
     let [validGravity, gravityrValidMessage] = gravityIsValid(gravity);
 
+    //Kollar om alla inputfält är validerade och ok.
     let isValid=checkIfAllIsValid(validName, validClimate, validTerrain, validGravity)
-    let validEra=true
-    let eraValidMessage=''
 
+    //Om allt är validerat och ok, låses knappen upp
     if (isValid){
       invalidButton=false;
     }
 
+    //efter att man addat töms inputfält och touched ställs till false
     useEffect(()=>{
       setName('')
       setClimate('')
@@ -48,7 +49,8 @@ const AddPlanetForm=({favorites, setFavorites})=>{
 
 
   const handleSubmit=(e)=>{
-        
+      
+    //förhindrar att sidan laddas om när man trycker på knappen inuti Form taggen
     e.preventDefault();
 
         let newPlanet={ 
@@ -60,6 +62,7 @@ const AddPlanetForm=({favorites, setFavorites})=>{
             favorite:true
         }
 
+        //lägger till nytt objekt till listan. Skriver ut sucessmeddelande.
         let newPlanetAddedList=[...favorites, newPlanet]
         setFavorites(newPlanetAddedList)
         setSubMsgClassName('submitted')
