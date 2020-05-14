@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Lab-1-react-Starwars/static/css/main.35da3471.chunk.css",
-    "main.js": "/Lab-1-react-Starwars/static/js/main.1dccd168.chunk.js",
-    "main.js.map": "/Lab-1-react-Starwars/static/js/main.1dccd168.chunk.js.map",
+    "main.css": "/Lab-1-react-Starwars/static/css/main.1dbe382f.chunk.css",
+    "main.js": "/Lab-1-react-Starwars/static/js/main.da7dc8ea.chunk.js",
+    "main.js.map": "/Lab-1-react-Starwars/static/js/main.da7dc8ea.chunk.js.map",
     "runtime-main.js": "/Lab-1-react-Starwars/static/js/runtime-main.aae6c2ca.js",
     "runtime-main.js.map": "/Lab-1-react-Starwars/static/js/runtime-main.aae6c2ca.js.map",
     "static/js/2.9c154d30.chunk.js": "/Lab-1-react-Starwars/static/js/2.9c154d30.chunk.js",
     "static/js/2.9c154d30.chunk.js.map": "/Lab-1-react-Starwars/static/js/2.9c154d30.chunk.js.map",
     "index.html": "/Lab-1-react-Starwars/index.html",
-    "precache-manifest.2e5c8dd1943dc9ed3b342fa6d48fdd38.js": "/Lab-1-react-Starwars/precache-manifest.2e5c8dd1943dc9ed3b342fa6d48fdd38.js",
+    "precache-manifest.f67b0a1e2db73e77b6bc3cf8f7586b43.js": "/Lab-1-react-Starwars/precache-manifest.f67b0a1e2db73e77b6bc3cf8f7586b43.js",
     "service-worker.js": "/Lab-1-react-Starwars/service-worker.js",
-    "static/css/main.35da3471.chunk.css.map": "/Lab-1-react-Starwars/static/css/main.35da3471.chunk.css.map",
+    "static/css/main.1dbe382f.chunk.css.map": "/Lab-1-react-Starwars/static/css/main.1dbe382f.chunk.css.map",
     "static/js/2.9c154d30.chunk.js.LICENSE.txt": "/Lab-1-react-Starwars/static/js/2.9c154d30.chunk.js.LICENSE.txt",
     "static/media/FavoritesStyle.css": "/Lab-1-react-Starwars/static/media/socialwhite.6acae395.png",
     "static/media/SearchStyle.css": "/Lab-1-react-Starwars/static/media/magnifierblack.63ab0a12.png",
@@ -20,7 +20,7 @@
   "entrypoints": [
     "static/js/runtime-main.aae6c2ca.js",
     "static/js/2.9c154d30.chunk.js",
-    "static/css/main.35da3471.chunk.css",
-    "static/js/main.1dccd168.chunk.js"
+    "static/css/main.1dbe382f.chunk.css",
+    "static/js/main.da7dc8ea.chunk.js"
   ]
 }
