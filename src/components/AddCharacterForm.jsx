@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import './AddOwnFavoriteStyle.css'
 
 const AddCharacterForm=({favorites, setFavorites})=>{
    
-    const [isAdded, setIsAdded]=useState(false)
+   
     const [name, setName]=useState('')
     const [birthYear, setBirthYear]=useState('')
     const [era, setEra]=useState('')
@@ -16,13 +16,14 @@ const AddCharacterForm=({favorites, setFavorites})=>{
     const [skinColorIsTouched, setSkinColorIsTouched]=useState(false)
 
     const [subMsgClassName, setSubMsgClassName]=useState('not-submitted')
+   
 
     let submitMessage='Character added. May the force be with you.'
     let filteredPeople=favorites.filter(item=>item.birth_year !==undefined)
     let invalidButton=true
     
     //För att validera alla inputfält
-    let [validName, nameValidMessage] = nameIsValid(name, filteredPeople, isAdded);
+    let [validName, nameValidMessage] = nameIsValid(name, filteredPeople);
     let [validBirthYear, birthYearValidMessage] = birthYearIsValid(birthYear);
     let [validHairColor, hairColorValidMessage] = hairColorIsValid(hairColor);
     let [validSkinColor, skinColorValidMessage] = skinColorIsValid(skinColor);
@@ -36,25 +37,16 @@ const AddCharacterForm=({favorites, setFavorites})=>{
     if (isValid){
         invalidButton=false;
     }
-    //efter att man addat töms inputfält och touched ställs till false
-    useEffect(()=>{
-        setName('')
-        setHairColor('')
-        setBirthYear('')
-        setSkinColor('')
-        setNameIsTouched(false)
-        setHairColorIsTouched(false)
-        setBirthYearIsTouched(false)
-        setSkinColorIsTouched(false)
-        console.log('i useEffect')
-    },[isAdded])
+
    
+    const timeoutFunc=()=>{
+        setSubMsgClassName('not-submitted')
+    }
 
     const handleSubmit=(e)=>{
          //förhindrar att sidan laddas om när man trycker på knappen inuti Form taggen
         e.preventDefault();
 
-        
         let newCharacter={ 
             name:name,
             birth_year:birthYear+era,
@@ -67,10 +59,19 @@ const AddCharacterForm=({favorites, setFavorites})=>{
         let newCharAddedList=[...favorites, newCharacter]
         setFavorites(newCharAddedList)
         setSubMsgClassName('submitted')
-        setIsAdded(true)
+       
+        setName('')
+        setHairColor('')
+        setBirthYear('')
+        setSkinColor('')
+        setNameIsTouched(false)
+        setHairColorIsTouched(false)
+        setBirthYearIsTouched(false)
+        setSkinColorIsTouched(false)
+       
+        setTimeout(timeoutFunc, 3000) 
 
     }
- 
 
     return (    
 
@@ -132,18 +133,20 @@ const AddCharacterForm=({favorites, setFavorites})=>{
           
         </>
         )
-    
+     
 
 }
 
 export default AddCharacterForm
 
 
-//kollar om man fyllt i mer än noll i inputfälten
-const nameIsValid=(name, filteredPeople, isAdded)=>{
 
-    if(!isAdded && filteredPeople.some(person=>person.name===name)){
+//kollar om man fyllt i mer än noll i inputfälten
+const nameIsValid=(name, filteredPeople)=>{
+
+    if(filteredPeople.some(person=>person.name===name)){
         return [false, 'Character with this name already exist']
+        //TODO Hur kollar jag om namnet redan finns? Helst nere i funktionen NameisValid. OM den är där nere kommer felmeddelande när jag lagt till den nya karaktären eftersom den ju kollar mot favorites om den finns där, vilket den ju gör eftersom jag precis lagt till den. Vilket mer villkor måste till?
     }
     if (name.length < 1){
         return [false, 'Need to write a name']

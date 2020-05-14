@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import './AddOwnFavoriteStyle.css'
 
 const AddPlanetForm=({favorites, setFavorites})=>{
    
-    const [isAdded, setIsAdded]=useState(false)
+    
     const [name, setName]=useState('')
     const [climate, setClimate]=useState('')
     const [terrain, setTerrain]=useState('')
@@ -21,10 +21,10 @@ const AddPlanetForm=({favorites, setFavorites})=>{
     let invalidButton=true
 
     //För att validera alla inputfält
-    let [validName, nameValidMessage] = nameIsValid(name, filteredPlanets, isAdded);
+    let [validName, nameValidMessage] = nameIsValid(name, filteredPlanets);
     let [validClimate, climateValidMessage] = climateIsValid(climate);
     let [validTerrain, terrainValidMessage] = terrainIsValid(terrain);
-    let [validGravity, gravityrValidMessage] = gravityIsValid(gravity);
+    let [validGravity, gravityValidMessage] = gravityIsValid(gravity);
 
     //Kollar om alla inputfält är validerade och ok.
     let isValid=checkIfAllIsValid(validName, validClimate, validTerrain, validGravity)
@@ -33,19 +33,9 @@ const AddPlanetForm=({favorites, setFavorites})=>{
     if (isValid){
       invalidButton=false;
     }
-
-    //efter att man addat töms inputfält och touched ställs till false
-    useEffect(()=>{
-      setName('')
-      setClimate('')
-      setTerrain('')
-      setGravity('')
-      setNameIsTouched(false)
-      setClimateIsTouched(false)
-      setTerrainIsTouched(false)
-      setGravityIsTouched(false)
-      
-  },[isAdded])
+    const timeoutFunc=()=>{
+      setSubMsgClassName('not-submitted')
+    }
 
 
   const handleSubmit=(e)=>{
@@ -66,7 +56,16 @@ const AddPlanetForm=({favorites, setFavorites})=>{
         let newPlanetAddedList=[...favorites, newPlanet]
         setFavorites(newPlanetAddedList)
         setSubMsgClassName('submitted')
-        setIsAdded(true)
+        setName('')
+        setClimate('')
+        setTerrain('')
+        setGravity('')
+        setNameIsTouched(false)
+        setClimateIsTouched(false)
+        setTerrainIsTouched(false)
+        setGravityIsTouched(false)
+        setTimeout(timeoutFunc, 3000) 
+        
 
 }
 
@@ -104,12 +103,12 @@ const AddPlanetForm=({favorites, setFavorites})=>{
               className={!validGravity && gravityIsTouched ? 'invalid' : ''}
               onBlur={()=>setGravityIsTouched(true)}   
               onChange={event=>setGravity(event.target.value)}/>
-              <strong className='invalid-message'>{terrainValidMessage}</strong>
+              <strong className='invalid-message'>{gravityValidMessage}</strong>
              
             <button className='submit-button' onClick={event=>handleSubmit(event)} disabled={invalidButton}>Use the force!</button>
             <h3 className={subMsgClassName}>{submitMessage}</h3>
            
-              </>
+            </>
 
     )
 
@@ -117,9 +116,9 @@ const AddPlanetForm=({favorites, setFavorites})=>{
 
 export default AddPlanetForm
 
-const nameIsValid=(name, filteredPlanets, isAdded)=>{
+const nameIsValid=(name, filteredPlanets)=>{
 
-  if(!isAdded && filteredPlanets.some(planet=>planet.name===name)){
+  if(filteredPlanets.some(planet=>planet.name===name)){
     
       return [false, 'Planet with this name already exist']
   }
