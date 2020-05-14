@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d191ca5c1609954f2a5c6de8a383e6c0",
+    "revision": "8bd85afd53db75f27047cb3bb3684ec1",
     "url": "/LadyLockheed/Lab-1-react-Starwars/index.html"
   },
   {
-    "revision": "cf995e39af631761260f",
-    "url": "/LadyLockheed/Lab-1-react-Starwars/static/css/main.adf84b71.chunk.css"
+    "revision": "c12076b9e7926c09444d",
+    "url": "/LadyLockheed/Lab-1-react-Starwars/static/css/main.5ae70c3d.chunk.css"
   },
   {
     "revision": "7736ad9ae5efcc2d3643",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/LadyLockheed/Lab-1-react-Starwars/static/js/2.9c154d30.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "cf995e39af631761260f",
-    "url": "/LadyLockheed/Lab-1-react-Starwars/static/js/main.583b655c.chunk.js"
+    "revision": "c12076b9e7926c09444d",
+    "url": "/LadyLockheed/Lab-1-react-Starwars/static/js/main.b8b445ee.chunk.js"
   },
   {
     "revision": "23365dae3cf932151743",

@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/LadyLockheed/Lab-1-react-Starwars/static/css/main.adf84b71.chunk.css",
-    "main.js": "/LadyLockheed/Lab-1-react-Starwars/static/js/main.583b655c.chunk.js",
-    "main.js.map": "/LadyLockheed/Lab-1-react-Starwars/static/js/main.583b655c.chunk.js.map",
+    "main.css": "/LadyLockheed/Lab-1-react-Starwars/static/css/main.5ae70c3d.chunk.css",
+    "main.js": "/LadyLockheed/Lab-1-react-Starwars/static/js/main.b8b445ee.chunk.js",
+    "main.js.map": "/LadyLockheed/Lab-1-react-Starwars/static/js/main.b8b445ee.chunk.js.map",
     "runtime-main.js": "/LadyLockheed/Lab-1-react-Starwars/static/js/runtime-main.c6686f33.js",
     "runtime-main.js.map": "/LadyLockheed/Lab-1-react-Starwars/static/js/runtime-main.c6686f33.js.map",
     "static/js/2.9c154d30.chunk.js": "/LadyLockheed/Lab-1-react-Starwars/static/js/2.9c154d30.chunk.js",
     "static/js/2.9c154d30.chunk.js.map": "/LadyLockheed/Lab-1-react-Starwars/static/js/2.9c154d30.chunk.js.map",
     "index.html": "/LadyLockheed/Lab-1-react-Starwars/index.html",
-    "precache-manifest.bd109dcff30a7b03218a4d43f4cc176a.js": "/LadyLockheed/Lab-1-react-Starwars/precache-manifest.bd109dcff30a7b03218a4d43f4cc176a.js",
+    "precache-manifest.85a131104257599419128253fe2959e5.js": "/LadyLockheed/Lab-1-react-Starwars/precache-manifest.85a131104257599419128253fe2959e5.js",
     "service-worker.js": "/LadyLockheed/Lab-1-react-Starwars/service-worker.js",
-    "static/css/main.adf84b71.chunk.css.map": "/LadyLockheed/Lab-1-react-Starwars/static/css/main.adf84b71.chunk.css.map",
+    "static/css/main.5ae70c3d.chunk.css.map": "/LadyLockheed/Lab-1-react-Starwars/static/css/main.5ae70c3d.chunk.css.map",
     "static/js/2.9c154d30.chunk.js.LICENSE.txt": "/LadyLockheed/Lab-1-react-Starwars/static/js/2.9c154d30.chunk.js.LICENSE.txt",
     "static/media/FavoritesStyle.css": "/LadyLockheed/Lab-1-react-Starwars/static/media/socialwhite.6acae395.png",
     "static/media/SearchStyle.css": "/LadyLockheed/Lab-1-react-Starwars/static/media/magnifierblack.63ab0a12.png",
@@ -20,7 +20,7 @@
   "entrypoints": [
     "static/js/runtime-main.c6686f33.js",
     "static/js/2.9c154d30.chunk.js",
-    "static/css/main.adf84b71.chunk.css",
-    "static/js/main.583b655c.chunk.js"
+    "static/css/main.5ae70c3d.chunk.css",
+    "static/js/main.b8b445ee.chunk.js"
   ]
 }
