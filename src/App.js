@@ -68,6 +68,7 @@ function App() {
       resultFirstPage.results.forEach(element=>data.push(element))
 
       let next=resultFirstPage.next
+      console.log('next är: ', next)
       let pageNumber=2;
 
       //loopar igenom restrerande url:er med sidor med people/planets
