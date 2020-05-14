@@ -33,9 +33,9 @@ const AddPlanetForm=({favorites, setFavorites})=>{
     if (isValid){
       invalidButton=false;
     }
-    const timeoutFunc=()=>{
-      setSubMsgClassName('not-submitted')
-    }
+    // const timeoutFunc=()=>{
+    //   setSubMsgClassName('not-submitted')
+    // }
 
 
   const handleSubmit=(e)=>{
@@ -64,7 +64,7 @@ const AddPlanetForm=({favorites, setFavorites})=>{
         setClimateIsTouched(false)
         setTerrainIsTouched(false)
         setGravityIsTouched(false)
-        setTimeout(timeoutFunc, 3000) 
+        // setTimeout(timeoutFunc, 3000) 
         
 
 }

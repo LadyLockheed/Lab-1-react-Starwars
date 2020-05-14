@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './AddOwnFavoriteStyle.css'
 
 const AddCharacterForm=({favorites, setFavorites})=>{
@@ -39,12 +39,13 @@ const AddCharacterForm=({favorites, setFavorites})=>{
     }
 
    
-    const timeoutFunc=()=>{
-        setSubMsgClassName('not-submitted')
-    }
+    // const timeoutFunc=()=>{
+    //     setSubMsgClassName('not-submitted')
+    // }
 
     const handleSubmit=(e)=>{
          //förhindrar att sidan laddas om när man trycker på knappen inuti Form taggen
+         //Man behöver inte ha en form tag
         e.preventDefault();
 
         let newCharacter={ 
@@ -69,9 +70,10 @@ const AddCharacterForm=({favorites, setFavorites})=>{
         setBirthYearIsTouched(false)
         setSkinColorIsTouched(false)
        
-        setTimeout(timeoutFunc, 3000) 
+        // setTimeout(timeoutFunc, 3000) 
 
     }
+   
 
     return (    
 
