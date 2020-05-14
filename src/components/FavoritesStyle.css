@@ -1,10 +1,13 @@
+.favorites-comp{
+   
+    font-size:1.3em;
+}
 .nofavv{
+    
     font-size:3rem;
-    font-family:Arial, Helvetica, sans-serif;
-
-  color:white;
-  font-weight:800;
-  margin:2.8em 1.5em;
+    color:white;
+    font-weight:800;
+    margin:2.8em 1.5em;
 }
 .grid-container-favorites{
     padding:2em;

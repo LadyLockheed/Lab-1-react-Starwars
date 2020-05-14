@@ -94,7 +94,7 @@ const Favorites=({favorites, setFavorites})=>{
     return(<div className='nofavv'>There is no spoon....eh....sorry, wrong movie</div>)
    
     return(
-        <div>
+        <div className='favorites-comp'>
             <div className='button-container-favorites'>
                 <button className={favAllButton} onClick={()=>setDisplayList('ALL')}>All</button>
                 <button className={favPeopleButton} onClick={()=>setDisplayList('PEOPLE')}>People</button>

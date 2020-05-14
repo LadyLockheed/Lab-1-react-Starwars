@@ -1,4 +1,5 @@
 .grid-container{
+    font-size:1.3em;
     padding:2em;
     display:grid;
     grid-template-columns:repeat(4, 1fr);

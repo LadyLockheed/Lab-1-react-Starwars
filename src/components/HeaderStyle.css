@@ -4,7 +4,8 @@ header{
     flex-direction:row;
     justify-content:space-between;
     padding:.5em 1.5em;
-
+    font-size:1.5em;
+   
   }
   .headerLogo{
     margin:0;
@@ -57,20 +58,6 @@ header{
       transition:all 0.3s ease 0s; 
       cursor:pointer;
 }
-.not-submitted{
-    color:rgba(255, 255, 255, 0);
-    text-align:center;
-    margin-top:0;
-    padding:.3em;
-}
-.submitted{
-    color:white;
-    text-align:center;
-    
-    font-weight:800;
-    background-color:rgba(0, 0, 0, 0.507);
-    padding:.3em;
-    margin-top:0;
-}
+
 
    
