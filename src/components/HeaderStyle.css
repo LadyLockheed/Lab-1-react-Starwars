@@ -25,6 +25,9 @@ header{
       margin:0.5;
       
   }
+  .navbar{
+    font-size:1em;
+  }
   .nav-not-active{
     display:inline-block;
     border:2px solid #20202000;
@@ -63,6 +66,7 @@ header{
 .submitted{
     color:white;
     text-align:center;
+    
     font-weight:800;
     background-color:rgba(0, 0, 0, 0.507);
     padding:.3em;

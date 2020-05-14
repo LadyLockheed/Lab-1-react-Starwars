@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import './AddOwnFavoriteStyle.css'
 
 const AddCharacterForm=({favorites, setFavorites})=>{
@@ -38,9 +38,13 @@ const AddCharacterForm=({favorites, setFavorites})=>{
         invalidButton=false;
     }
 
-   
+
     // const timeoutFunc=()=>{
     //     setSubMsgClassName('not-submitted')
+    //     return ()=>{
+    //         clearTimeout();
+    //     }
+
     // }
 
     const handleSubmit=(e)=>{
@@ -70,9 +74,10 @@ const AddCharacterForm=({favorites, setFavorites})=>{
         setBirthYearIsTouched(false)
         setSkinColorIsTouched(false)
        
-        // setTimeout(timeoutFunc, 3000) 
+        // setTimeout(timeoutFunc, 3000)
 
     }
+    
    
 
     return (    

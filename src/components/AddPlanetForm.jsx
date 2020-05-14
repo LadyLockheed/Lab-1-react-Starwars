@@ -64,8 +64,7 @@ const AddPlanetForm=({favorites, setFavorites})=>{
         setClimateIsTouched(false)
         setTerrainIsTouched(false)
         setGravityIsTouched(false)
-        // setTimeout(timeoutFunc, 3000) 
-        
+        // setTimeout(timeoutFunc, 3000)   
 
 }
 
