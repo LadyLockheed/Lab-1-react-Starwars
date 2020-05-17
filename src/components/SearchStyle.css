@@ -74,9 +74,19 @@
     font-size: .7em;
     border-radius:5px;
     color:white; 
+    transition: box-shadow .7s;
+    box-shadow:none;
+    height:200px;
+    text-align:center;
+}
+.card:hover{
+    -webkit-box-shadow: 10px 6px 9px -4px rgba(218,165,32,1);
+    -moz-box-shadow: 10px 6px 9px -4px rgba(218,165,32,1);
+    box-shadow: 10px 6px 9px -4px rgba(218,165,32,1);
 }
 .card > h2{
     color:goldenrod;
+    
 }
 .card >p {
     margin-left:.5em;
@@ -90,6 +100,7 @@
     background-repeat:no-repeat;
     display:inline-block;
     margin:.5em;
+    
 }
 .no-favorite{
     height:20px;
@@ -100,24 +111,11 @@
     display:inline-block;
     margin:.5em;
     
+    
 }
 .favorite:hover, .no-favorite:hover{
     cursor:pointer;
-}
-.to-the-top{
-    background-color:orange;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    height: 30px;
-    width: 30px;
-    background-color: #bbb;
-    border-radius: 50%;
-    margin:0.5em;
-    padding:0.5em;
-    border:none;
    
-
 }
 @media (max-width:618px){
     .grid-container{

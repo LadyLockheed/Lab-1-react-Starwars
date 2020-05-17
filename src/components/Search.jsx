@@ -45,7 +45,7 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
         return(
             <div key={person.name}  className='card'>
                 <h2 className={person.gender}>{person.name}</h2>
-                <p>Birt hyear: {person.birth_year}</p>
+                <p>Birth year: {person.birth_year}</p>
                 <p>Hair color: {person.hair_color}</p>
                 <p>Skin color: {person.skin_color}</p>
                 <div className={cardButtonCss} onClick={()=>handleAddToFavorites(person)} ></div>
@@ -63,11 +63,11 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
 
          //ändrar likeknappen beroende på om objektet är favorit eller ej
          if (planet.favorite===true){
-            // buttonDisabled=true;
+            
             cardButtonCss='favorite'
         }
         else{
-            // buttonDisabled=false;
+           
             cardButtonCss='no-favorite'
         }
 
@@ -124,13 +124,9 @@ const Search=({peopleData, planetsData, favorites, setFavorites})=>{
 
             </div>
     
-                {/* <a id="top">'</a> */}
+                
                     <div className='grid-container'>
                         {currentCategory}
-                        {/* <a href="#top"> */}
-                            <button className='to-the-top'>To the top</button>
-                        {/* </a> */}
-
                     </div>
 
         </div>

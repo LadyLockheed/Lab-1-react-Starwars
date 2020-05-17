@@ -81,7 +81,7 @@ const Favorites=({favorites, setFavorites})=>{
                 <div className={imageClassName}></div>     
             </div>
            
-            <p>{category1} {categoryItem1}</p>
+            <p className='top-p'>{category1} {categoryItem1}</p>
             <p>{category2} {categoryItem2}</p>
             <p>{category3} {categoryItem3}</p>
     

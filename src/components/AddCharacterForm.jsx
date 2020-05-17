@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './AddOwnFavoriteStyle.css'
 
 const AddCharacterForm=({favorites, setFavorites})=>{
@@ -38,14 +38,21 @@ const AddCharacterForm=({favorites, setFavorites})=>{
         invalidButton=false;
     }
 
+    useEffect(()=>{
+        let mounted=true;
+        const timeoutFunc=()=>{
+            if(!mounted) return;
+            setSubMsgClassName('not-submitted')
+        }
+        
+        setTimeout(timeoutFunc, 3000)
+        return ()=>{
+            mounted=false;
+            clearTimeout();
+            
+        }
 
-    // const timeoutFunc=()=>{
-    //     setSubMsgClassName('not-submitted')
-    //     return ()=>{
-    //         clearTimeout();
-    //     }
-
-    // }
+    },[subMsgClassName])
 
     const handleSubmit=(e)=>{
          //förhindrar att sidan laddas om när man trycker på knappen inuti Form taggen

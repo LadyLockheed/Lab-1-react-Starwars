@@ -1,70 +1,81 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './AddOwnFavoriteStyle.css'
 
 const AddPlanetForm=({favorites, setFavorites})=>{
    
     
-    const [name, setName]=useState('')
-    const [climate, setClimate]=useState('')
-    const [terrain, setTerrain]=useState('')
-    const [gravity, setGravity]=useState('')
+  const [name, setName]=useState('')
+  const [climate, setClimate]=useState('')
+  const [terrain, setTerrain]=useState('')
+  const [gravity, setGravity]=useState('')
 
-    const [nameIsTouched, setNameIsTouched]=useState(false)
-    const [climateIsTouched, setClimateIsTouched]=useState(false)
-    const [terrainIsTouched, setTerrainIsTouched]=useState(false)
-    const [gravityIsTouched, setGravityIsTouched]=useState(false)
+  const [nameIsTouched, setNameIsTouched]=useState(false)
+  const [climateIsTouched, setClimateIsTouched]=useState(false)
+  const [terrainIsTouched, setTerrainIsTouched]=useState(false)
+  const [gravityIsTouched, setGravityIsTouched]=useState(false)
 
-    const [subMsgClassName, setSubMsgClassName]=useState('not-submitted')
+  const [subMsgClassName, setSubMsgClassName]=useState('not-submitted')
 
-    let submitMessage='Planet added. May the force be with you.'
-    let filteredPlanets=favorites.filter(item=>item.terrain !==undefined)
-    let invalidButton=true
+  let submitMessage='Planet added. May the force be with you.'
+  let filteredPlanets=favorites.filter(item=>item.terrain !==undefined)
+  let invalidButton=true
 
-    //För att validera alla inputfält
-    let [validName, nameValidMessage] = nameIsValid(name, filteredPlanets);
-    let [validClimate, climateValidMessage] = climateIsValid(climate);
-    let [validTerrain, terrainValidMessage] = terrainIsValid(terrain);
-    let [validGravity, gravityValidMessage] = gravityIsValid(gravity);
+  //För att validera alla inputfält
+  let [validName, nameValidMessage] = nameIsValid(name, filteredPlanets);
+  let [validClimate, climateValidMessage] = climateIsValid(climate);
+  let [validTerrain, terrainValidMessage] = terrainIsValid(terrain);
+  let [validGravity, gravityValidMessage] = gravityIsValid(gravity);
 
-    //Kollar om alla inputfält är validerade och ok.
-    let isValid=checkIfAllIsValid(validName, validClimate, validTerrain, validGravity)
+  //Kollar om alla inputfält är validerade och ok.
+  let isValid=checkIfAllIsValid(validName, validClimate, validTerrain, validGravity)
 
-    //Om allt är validerat och ok, låses knappen upp
-    if (isValid){
-      invalidButton=false;
+  //Om allt är validerat och ok, låses knappen upp
+  if (isValid){
+    invalidButton=false;
+  }
+
+  useEffect(()=>{
+    let mounted=true;
+    const timeoutFunc=()=>{
+        if(!mounted) return;
+        setSubMsgClassName('not-submitted')
     }
-    // const timeoutFunc=()=>{
-    //   setSubMsgClassName('not-submitted')
-    // }
+    
+    setTimeout(timeoutFunc, 3000)
+    return ()=>{
+        mounted=false;
+        clearTimeout();
+        
+    }
 
+  },[subMsgClassName])
 
   const handleSubmit=(e)=>{
       
-    //förhindrar att sidan laddas om när man trycker på knappen inuti Form taggen
-    e.preventDefault();
+  //förhindrar att sidan laddas om när man trycker på knappen inuti Form taggen
+  e.preventDefault();
 
-        let newPlanet={ 
-            name:name,
-            climate:climate,
-            terrain:terrain,
-            gravity:gravity,
-            created:'by-me',
-            favorite:true
-        }
+  let newPlanet={ 
+      name:name,
+      climate:climate,
+      terrain:terrain,
+      gravity:gravity,
+      created:'by-me',
+      favorite:true
+  }
 
-        //lägger till nytt objekt till listan. Skriver ut sucessmeddelande.
-        let newPlanetAddedList=[...favorites, newPlanet]
-        setFavorites(newPlanetAddedList)
-        setSubMsgClassName('submitted')
-        setName('')
-        setClimate('')
-        setTerrain('')
-        setGravity('')
-        setNameIsTouched(false)
-        setClimateIsTouched(false)
-        setTerrainIsTouched(false)
-        setGravityIsTouched(false)
-        // setTimeout(timeoutFunc, 3000)   
+  //lägger till nytt objekt till listan. Skriver ut sucessmeddelande.
+  let newPlanetAddedList=[...favorites, newPlanet]
+  setFavorites(newPlanetAddedList)
+  setSubMsgClassName('submitted')
+  setName('')
+  setClimate('')
+  setTerrain('')
+  setGravity('')
+  setNameIsTouched(false)
+  setClimateIsTouched(false)
+  setTerrainIsTouched(false)
+  setGravityIsTouched(false)  
 
 }
 
