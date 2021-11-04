@@ -1,3 +1,9 @@
+## School project
+This was the task that made me fall in love with React. And also, we got to work with Star Wars-related data, yey. 
+It has no fancy stack, it is all just frontend. The purpose was to work with the framework of your choice and handle GET requests to an server. <br/>  
+-LadyLockheed
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
